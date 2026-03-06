@@ -14,58 +14,41 @@
             --card-bg: #2f3136;
         }
 
+        /* --- GLOBAL RESET & ANTI-HIGHLIGHT --- */
         * { 
             box-sizing: border-box;
-            /* Biarkan browser mengatur scroll internal */
-            scrollbar-width: thin; 
-            scrollbar-color: var(--muted-blue) var(--bg-darker);
+            /* Mematikan warna biru saat klik di HP */
+            -webkit-tap-highlight-color: transparent;
+            /* Mematikan fitur copy/paste/select supaya ga muncul popup link */
+            -webkit-touch-callout: none; 
+            -webkit-user-select: none;
+            user-select: none;
+            /* Tetap izinkan scroll tapi blokir zoom manual */
+            touch-action: pan-y; 
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-darker); }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--muted-blue); 
+            border-radius: 10px; 
+            border: 3px solid var(--bg-darker); 
         }
 
         body {
-            margin: 0; 
-            padding: 0;
+            margin: 0; padding: 0;
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
-            
-            /* Kunci layar utama supaya gak goyang/zoom */
-            overflow: hidden; 
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            touch-action: none; /* Matikan zoom di body */
-            overscroll-behavior-y: none; /* Matikan tarik-refresh chrome */
+            overflow-x: hidden; /* Mencegah geser kanan-kiri */
         }
 
         .page-wrapper {
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            height: 100vh; 
-            width: 100%;
-            padding: 20px;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; padding: 40px 20px;
         }
 
-        /* BAGIAN INI YANG PENTING AGAR BISA SCROLL PROYEK */
-        #project-page {
-            display: none; 
-            max-width: 800px; 
-            width: 100%; 
-            max-height: 90vh; /* Batasi tinggi kotak proyek */
-            overflow-y: auto; /* Aktifkan scroll hanya di dalam sini */
-            touch-action: pan-y; /* Izinkan geser atas-bawah saja */
-            padding-right: 10px;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Tambahan agar scrollbar tidak menutupi konten di mobile */
-        #project-page::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        /* Sisanya kode CSS kamu (h1, card, dll) taruh di bawah sini */
-        .fade-in { animation: fadeIn 0.5s ease-in forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .container {
             text-align: center; background-color: var(--bg-darker);
             padding: 3rem; border-radius: 20px;
@@ -73,38 +56,70 @@
             max-width: 500px; width: 90%;
             border-top: 5px solid var(--muted-blue);
         }
+
+        #project-page { 
+            display: none; 
+            max-width: 800px; 
+            width: 100%; 
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-in forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         h1, h2 { color: var(--muted-blue); margin-bottom: 10px; }
+
         .bio-section { margin-bottom: 40px; text-align: center; }
+
         .profile-img {
-            width: 120px; height: 120px; border-radius: 50%;
-            margin: 0 auto; border: 3px solid var(--muted-blue);
+            width: 120px; height: 120px;
+            border-radius: 50%; margin: 0 auto;
+            border: 3px solid var(--muted-blue);
             overflow: hidden; background-color: var(--bg-darker);
         }
+
         .profile-img img { width: 100%; height: 100%; object-fit: cover; }
+
         .project-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px; margin-top: 20px;
         }
+
         .project-card {
-            background-color: var(--bg-darker); padding: 20px; border-radius: 12px;
-            border-left: 4px solid var(--muted-blue); transition: 0.3s;
+            background-color: var(--bg-darker);
+            padding: 25px; border-radius: 12px;
+            border-left: 4px solid var(--muted-blue);
+            transition: all 0.3s ease;
             text-decoration: none; color: inherit; display: block;
         }
-        .project-card:hover { transform: translateY(-5px); background-color: var(--card-bg); }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
         .lang-tag {
             display: inline-block; margin-top: 15px; font-size: 0.75rem;
             padding: 4px 12px; border-radius: 6px;
-            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue); font-weight: bold;
+            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue);
+            font-weight: bold;
         }
+
         .play-btn {
             display: inline-block; margin-top: 15px; margin-left: 10px;
-            padding: 4px 15px; font-size: 0.75rem; background-color: var(--muted-blue);
-            color: var(--bg-darker); border-radius: 6px; font-weight: bold; text-decoration: none;
+            padding: 4px 15px; font-size: 0.75rem;
+            background-color: var(--muted-blue); color: var(--bg-darker);
+            border-radius: 6px; font-weight: bold; text-decoration: none;
         }
+
         .btn {
-            display: inline-block; padding: 12px 35px; background-color: var(--muted-blue);
-            color: var(--bg-darker); font-weight: bold; border-radius: 50px; cursor: pointer; border: none;
+            display: inline-block; padding: 12px 35px;
+            background-color: var(--muted-blue); color: var(--bg-darker);
+            font-weight: bold; border-radius: 50px; cursor: pointer;
+            border: none; transition: 0.3s;
         }
+
         .back-link { display: inline-block; margin-bottom: 25px; color: var(--text-dim); text-decoration: none; }
     </style>
 </head>
