@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rayhand</title>
     <style>
         :root {
@@ -14,34 +14,50 @@
             --card-bg: #2f3136;
         }
 
-        /* --- CUSTOM SCROLLBAR --- */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--bg-darker); }
-        ::-webkit-scrollbar-thumb { 
-            background: var(--muted-blue); 
-            border-radius: 10px; 
-            border: 3px solid var(--bg-darker); 
+        * { 
+            scrollbar-width: thin; 
+            scrollbar-color: var(--muted-blue) var(--bg-darker);
+            /* PINDAHKAN KE SINI */
+            touch-action: none; /* Benar-benar mematikan semua gesture zoom/pan luar */
+            box-sizing: border-box;
         }
-        ::-webkit-scrollbar-thumb:hover { background: #7ba8c7; }
-        * { scrollbar-width: thin; scrollbar-color: var(--muted-blue) var(--bg-darker); }
 
         body {
-            margin: 0; padding: 0;
+            margin: 0; 
+            padding: 0;
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
-            overflow-x: hidden;
+            overflow: hidden; 
+            height: 100dvh;
+            width: 100vw;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            overscroll-behavior-y: contain;
         }
 
         .page-wrapper {
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; padding: 40px 20px; box-sizing: border-box;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            height: 100dvh; 
+            width: 100%;
+            padding: 20px;
+        }
+
+        #project-page {
+            display: none; 
+            max-width: 800px; 
+            width: 100%; 
+            max-height: 85dvh; /* Beri sedikit ruang agar tidak mepet bawah */
+            overflow-y: auto; /* Scroll hanya aktif di dalam daftar projek */
+            padding-right: 10px;
+            -webkit-overflow-scrolling: touch; /* Supaya scroll di HP tetap mulus */
         }
 
         .fade-in { animation: fadeIn 0.5s ease-in forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Container Card */
         .container {
             text-align: center; background-color: var(--bg-darker);
             padding: 3rem; border-radius: 20px;
