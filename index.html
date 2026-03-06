@@ -56,7 +56,7 @@
 
         .bio-section { margin-bottom: 40px; text-align: center; }
 
-        /* Style Foto Profil (Digunakan di Home & Bio) */
+        /* Style Foto Profil */
         .profile-img {
             width: 120px; height: 120px;
             border-radius: 50%;
@@ -84,6 +84,7 @@
             border-left: 4px solid var(--muted-blue);
             transition: all 0.3s ease;
             text-decoration: none; color: inherit; display: block;
+            position: relative;
         }
 
         .project-card:hover {
@@ -97,6 +98,26 @@
             padding: 4px 12px; border-radius: 6px;
             background: rgba(146, 185, 214, 0.15); color: var(--muted-blue);
             font-weight: bold;
+        }
+
+        /* Tombol Play Khusus */
+        .play-btn {
+            display: inline-block;
+            margin-top: 15px;
+            margin-left: 10px;
+            padding: 4px 15px;
+            font-size: 0.75rem;
+            background-color: var(--muted-blue);
+            color: var(--bg-darker);
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .play-btn:hover {
+            background-color: #f0f0f0;
+            transform: scale(1.05);
         }
 
         .btn {
@@ -119,8 +140,8 @@
             <div class="profile-img" style="margin-bottom: 1.5rem;">
                 <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
             </div>
-            <h1>Rayhand</h1>
-            <p>Selamat datang di website Rayhand.</p>
+            <h1>Hallo!</h1>
+            <p>Selamat datang di website Rayhand!</p>
             <button class="btn" onclick="showProjects()">Jelajahi Lebih Lanjut</button>
         </div>
 
@@ -132,7 +153,7 @@
                     <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
                 </div>
                 <h2>Tentang Saya</h2>
-                <p>Halo, saya <strong>Rayhand</strong>. Seorang pengembang yang fokus pada pembuatan bot dan aplikasi berbasis JavaScript dan Python.</p>
+                <p>Halo, saya <strong>Rayhand</strong>. Seorang pengembang JavaScript dan Python.</p>
             </div>
 
             <h2>Projek Unggulan</h2>
@@ -152,11 +173,15 @@
                     <p>Implementasi deteksi sensor menggunakan Python.</p>
                     <span class="lang-tag">Python</span>
                 </a>
-                <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
-                    <h3>SpaceDodge</h3>
-                    <p>Game arcade sederhana.</p>
+                
+                <div class="project-card">
+                    <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" style="text-decoration:none; color:inherit;">
+                        <h3>SpaceDodge</h3>
+                        <p>Game arcade sederhana.</p>
+                    </a>
                     <span class="lang-tag">JavaScript</span>
-                </a>
+                    <a href="https://space-dodge-theta.vercel.app/" target="_blank" class="play-btn">🎮 Play Game</a>
+                </div>
             </div>
         </div>
     </div>
@@ -172,7 +197,5 @@
             document.getElementById('home-page').style.display = 'block';
         }
     </script>
-    <script defer src="/_vercel/speed-insights/script.js"></script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
