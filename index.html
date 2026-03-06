@@ -15,10 +15,10 @@
         }
 
         * { 
+            box-sizing: border-box;
+            /* Biarkan browser mengatur scroll internal */
             scrollbar-width: thin; 
             scrollbar-color: var(--muted-blue) var(--bg-darker);
-            touch-action: none;
-            box-sizing: border-box;
         }
 
         body {
@@ -27,33 +27,43 @@
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
+            
+            /* Kunci layar utama supaya gak goyang/zoom */
             overflow: hidden; 
-            height: 100dvh;
+            height: 100vh;
             width: 100vw;
-            position: fixed; 
-            top: 0;
-            left: 0;
+            position: fixed;
+            touch-action: none; /* Matikan zoom di body */
+            overscroll-behavior-y: none; /* Matikan tarik-refresh chrome */
         }
 
         .page-wrapper {
             display: flex; 
             justify-content: center; 
             align-items: center;
-            height: 100dvh; 
+            height: 100vh; 
             width: 100%;
             padding: 20px;
         }
 
+        /* BAGIAN INI YANG PENTING AGAR BISA SCROLL PROYEK */
         #project-page {
             display: none; 
             max-width: 800px; 
             width: 100%; 
-            max-height: 85dvh; /* Beri sedikit ruang agar tidak mepet bawah */
-            overflow-y: auto; /* Scroll hanya aktif di dalam daftar projek */
+            max-height: 90vh; /* Batasi tinggi kotak proyek */
+            overflow-y: auto; /* Aktifkan scroll hanya di dalam sini */
+            touch-action: pan-y; /* Izinkan geser atas-bawah saja */
             padding-right: 10px;
-            -webkit-overflow-scrolling: touch; /* Supaya scroll di HP tetap mulus */
+            -webkit-overflow-scrolling: touch;
         }
 
+        /* Tambahan agar scrollbar tidak menutupi konten di mobile */
+        #project-page::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* Sisanya kode CSS kamu (h1, card, dll) taruh di bawah sini */
         .fade-in { animation: fadeIn 0.5s ease-in forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .container {
@@ -63,88 +73,39 @@
             max-width: 500px; width: 90%;
             border-top: 5px solid var(--muted-blue);
         }
-
-        #project-page { display: none; max-width: 800px; width: 100%; }
-
         h1, h2 { color: var(--muted-blue); margin-bottom: 10px; }
-
         .bio-section { margin-bottom: 40px; text-align: center; }
-
-        /* Style Foto Profil */
         .profile-img {
-            width: 120px; height: 120px;
-            border-radius: 50%;
-            margin: 0 auto;
-            border: 3px solid var(--muted-blue);
-            overflow: hidden;
-            background-color: var(--bg-darker);
+            width: 120px; height: 120px; border-radius: 50%;
+            margin: 0 auto; border: 3px solid var(--muted-blue);
+            overflow: hidden; background-color: var(--bg-darker);
         }
-
-        .profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px; margin-top: 20px;
         }
-
         .project-card {
-            background-color: var(--bg-darker);
-            padding: 25px; border-radius: 12px;
-            border-left: 4px solid var(--muted-blue);
-            transition: all 0.3s ease;
+            background-color: var(--bg-darker); padding: 20px; border-radius: 12px;
+            border-left: 4px solid var(--muted-blue); transition: 0.3s;
             text-decoration: none; color: inherit; display: block;
-            position: relative;
         }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            background-color: var(--card-bg);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
+        .project-card:hover { transform: translateY(-5px); background-color: var(--card-bg); }
         .lang-tag {
             display: inline-block; margin-top: 15px; font-size: 0.75rem;
             padding: 4px 12px; border-radius: 6px;
-            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue);
-            font-weight: bold;
+            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue); font-weight: bold;
         }
-
-        /* Tombol Play Khusus */
         .play-btn {
-            display: inline-block;
-            margin-top: 15px;
-            margin-left: 10px;
-            padding: 4px 15px;
-            font-size: 0.75rem;
-            background-color: var(--muted-blue);
-            color: var(--bg-darker);
-            border-radius: 6px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s;
+            display: inline-block; margin-top: 15px; margin-left: 10px;
+            padding: 4px 15px; font-size: 0.75rem; background-color: var(--muted-blue);
+            color: var(--bg-darker); border-radius: 6px; font-weight: bold; text-decoration: none;
         }
-
-        .play-btn:hover {
-            background-color: #f0f0f0;
-            transform: scale(1.05);
-        }
-
         .btn {
-            display: inline-block; padding: 12px 35px;
-            background-color: var(--muted-blue); color: var(--bg-darker);
-            font-weight: bold; border-radius: 50px; cursor: pointer;
-            border: none; transition: all 0.3s;
+            display: inline-block; padding: 12px 35px; background-color: var(--muted-blue);
+            color: var(--bg-darker); font-weight: bold; border-radius: 50px; cursor: pointer; border: none;
         }
-
-        .btn:hover { background-color: #7ba8c7; transform: translateY(-3px); }
-
         .back-link { display: inline-block; margin-bottom: 25px; color: var(--text-dim); text-decoration: none; }
-        .back-link:hover { color: var(--muted-blue); }
     </style>
 </head>
 <body>
