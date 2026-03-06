@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rayhand</title>
+    <style>
+        :root {
+            --bg-dark: #2c2f33; 
+            --bg-darker: #23272a; 
+            --muted-blue: #92b9d6; 
+            --text-light: #f0f0f0;
+            --text-dim: #b9bbbe;
+            --card-bg: #2f3136;
+        }
+
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-darker); }
+        ::-webkit-scrollbar-thumb { 
+            background: var(--muted-blue); 
+            border-radius: 10px; 
+            border: 3px solid var(--bg-darker); 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #7ba8c7; }
+        * { scrollbar-width: thin; scrollbar-color: var(--muted-blue) var(--bg-darker); }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        .page-wrapper {
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; padding: 40px 20px; box-sizing: border-box;
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-in forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Container Card */
+        .container {
+            text-align: center; background-color: var(--bg-darker);
+            padding: 3rem; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 500px; width: 90%;
+            border-top: 5px solid var(--muted-blue);
+        }
+
+        #project-page { display: none; max-width: 800px; width: 100%; }
+
+        h1, h2 { color: var(--muted-blue); margin-bottom: 10px; }
+
+        .bio-section { margin-bottom: 40px; text-align: center; }
+
+        /* Style Foto Profil (Digunakan di Home & Bio) */
+        .profile-img {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            margin: 0 auto;
+            border: 3px solid var(--muted-blue);
+            overflow: hidden;
+            background-color: var(--bg-darker);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; margin-top: 20px;
+        }
+
+        .project-card {
+            background-color: var(--bg-darker);
+            padding: 25px; border-radius: 12px;
+            border-left: 4px solid var(--muted-blue);
+            transition: all 0.3s ease;
+            text-decoration: none; color: inherit; display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--card-bg);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .lang-tag {
+            display: inline-block; margin-top: 15px; font-size: 0.75rem;
+            padding: 4px 12px; border-radius: 6px;
+            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue);
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block; padding: 12px 35px;
+            background-color: var(--muted-blue); color: var(--bg-darker);
+            font-weight: bold; border-radius: 50px; cursor: pointer;
+            border: none; transition: all 0.3s;
+        }
+
+        .btn:hover { background-color: #7ba8c7; transform: translateY(-3px); }
+
+        .back-link { display: inline-block; margin-bottom: 25px; color: var(--text-dim); text-decoration: none; }
+        .back-link:hover { color: var(--muted-blue); }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <div id="home-page" class="container fade-in">
+            <div class="profile-img" style="margin-bottom: 1.5rem;">
+                <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
+            </div>
+            <h1>Rayhand</h1>
+            <p>Selamat datang di website Rayhand.</p>
+            <button class="btn" onclick="showProjects()">Jelajahi Lebih Lanjut</button>
+        </div>
+
+        <div id="project-page" class="fade-in">
+            <a href="javascript:void(0)" class="back-link" onclick="showHome()">← Kembali</a>
+            
+            <div class="bio-section">
+                <div class="profile-img" style="margin-bottom: 15px;">
+                    <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
+                </div>
+                <h2>Tentang Saya</h2>
+                <p>Halo, saya <strong>Rayhand</strong>. Seorang pengembang yang fokus pada pembuatan bot dan aplikasi berbasis JavaScript dan Python.</p>
+            </div>
+
+            <h2>Projek Unggulan</h2>
+            <div class="project-grid">
+                <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
+                    <h3>RyzuBot</h3>
+                    <p>Automasi bot serbaguna dengan performa tinggi.</p>
+                    <span class="lang-tag">JavaScript</span>
+                </a>
+                <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
+                    <h3>RoomChat</h3>
+                    <p>Aplikasi chatting real-time berbasis room.</p>
+                    <span class="lang-tag">JavaScript</span>
+                </a>
+                <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
+                    <h3>SensorKamera</h3>
+                    <p>Implementasi deteksi sensor menggunakan Python.</p>
+                    <span class="lang-tag">Python</span>
+                </a>
+                <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
+                    <h3>SpaceDodge</h3>
+                    <p>Game arcade sederhana.</p>
+                    <span class="lang-tag">JavaScript</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showProjects() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('project-page').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+        function showHome() {
+            document.getElementById('project-page').style.display = 'none';
+            document.getElementById('home-page').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
