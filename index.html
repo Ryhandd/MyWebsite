@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rayhand</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
@@ -15,7 +15,6 @@
             --card-bg: #2f3136;
         }
 
-        /* --- CUSTOM SCROLLBAR --- */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--bg-darker); }
         ::-webkit-scrollbar-thumb { 
@@ -31,7 +30,8 @@
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
-            overflow-x: hidden;
+            overflow: hidden; 
+            touch-action: pan-x;
         }
 
         .page-wrapper {
@@ -196,11 +196,14 @@
                     <span class="lang-tag">JavaScript</span>
                 </a>
                 
-                <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
-                    <h3>RoomChat</h3>
-                    <p>Website chatting real-time berbasis room menggunakan WebSockets.</p>
+                <div class="project-card">
+                    <a href="https://github.com/Ryhandd/RoomChat" target="_blank" style="text-decoration:none; color:inherit;">
+                        <h3>RoomChat</h3>
+                        <p>Website chatting real-time berbasis room menggunakan WebSockets.</p>
+                    </a>
                     <span class="lang-tag">JavaScript</span>
-                </a>
+                    <a href="https://e9e82fc3-695f-49b3-b4dd-4e11509dd67b-00-2hyb6csz8yb82.pike.replit.dev/" target="_blank" class="play-btn"><i class="fa-solid fa-paper-plane"></i> Open App</a>
+                </div>
                 
                 <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
                     <h3>SensorKamera</h3>
@@ -224,11 +227,13 @@
         function showProjects() {
             document.getElementById('home-page').style.display = 'none';
             document.getElementById('project-page').style.display = 'block';
+            document.body.style.overflow = 'auto';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         function showHome() {
             document.getElementById('project-page').style.display = 'none';
             document.getElementById('home-page').style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
     </script>
 </body>
