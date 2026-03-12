@@ -4,286 +4,902 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rayhand</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #2c2f33; 
-            --bg-darker: #23272a; 
-            --muted-blue: #92b9d6; 
-            --text-light: #f0f0f0;
-            --text-dim: #b9bbbe;
-            --card-bg: #2f3136;
+            --bg: #0e0f14;
+            --surface: #14151d;
+            --surface2: #1a1c28;
+            --accent: #7eb8d4;
+            --accent2: #a8d4ea;
+            --accent-glow: rgba(126,184,212,0.18);
+            --text: #eaedf5;
+            --text-dim: #7b8098;
+            --border: rgba(126,184,212,0.15);
         }
-        
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--bg-darker); }
-        ::-webkit-scrollbar-thumb { 
-            background: var(--muted-blue); 
-            border-radius: 10px; 
-            border: 3px solid var(--bg-darker); 
-        }
-        ::-webkit-scrollbar-thumb:hover { background: #7ba8c7; }
-        * { scrollbar-width: thin; scrollbar-color: var(--muted-blue) var(--bg-darker); }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+        @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes pulse-ring { 0%,100% { box-shadow: 0 0 0 0 var(--accent-glow); } 50% { box-shadow: 0 0 0 12px transparent; } }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes wave { 0%,100% { height: 6px; } 50% { height: 22px; } }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 
         body {
-            margin: 0; padding: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow: hidden;
-            touch-action: manipulation;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .page-wrapper {
-            display: flex; justify-content: center; align-items: center;
-            height: 100vh;
-            padding: 20px; box-sizing: border-box;
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.5;
         }
 
-        .fade-in { animation: fadeIn 0.5s ease-in forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .container {
-            text-align: center; background-color: var(--bg-darker);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            max-width: 450px; width: 90%;
-            border-top: 5px solid var(--muted-blue);
-            max-height: 90vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        #project-page { 
-            display: none; 
-            max-width: 900px; 
-            width: 100%; 
-            margin: 0 auto;
-        }
-
-        h1, h2 { color: var(--muted-blue); margin-bottom: 5px; }
-
-        .bio-section { margin-bottom: 30px; text-align: center; }
-
-        .profile-img {
-            width: 110px; height: 110px;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            border: 3px solid var(--muted-blue);
-            overflow: hidden;
-            background-color: var(--bg-darker);
-            transition: transform 0.5s ease;
-        }
-        
-        .profile-img:hover { transform: rotate(5deg) scale(1.05); }
-        .profile-img img { width: 100%; height: 100%; object-fit: cover; }
-
-        .social-links { margin: 15px 0; display: flex; justify-content: center; gap: 25px; }
-        .social-links a {
-            color: var(--muted-blue);
-            text-decoration: none;
-            font-size: 1.6rem;
-            transition: all 0.3s ease;
-        }
-        .social-links a:hover { color: #f0f0f0; transform: translateY(-5px); }
-
-        .skills-container {
-            display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
-        }
-        .skill-tag {
-            background: rgba(146, 185, 214, 0.1);
-            border: 1px solid var(--muted-blue);
-            padding: 4px 12px; border-radius: 20px;
-            font-size: 0.8rem; color: var(--muted-blue);
-        }
-
-        .music-player {
-            background: var(--bg-darker);
-            border: 1px solid var(--muted-blue);
-            border-radius: 15px;
-            padding: 10px;
-            margin: 10px auto 25px auto;
-            max-width: 320px;
+        /* ---- HOME PAGE ---- */
+        #home-page {
             display: flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
         }
-        .music-info {
-            flex-grow: 1;
-            text-align: left;
-        }
-        .music-title {
-            font-size: 0.85rem;
-            color: var(--muted-blue);
-            font-weight: bold;
-            display: block;
-        }
-        audio {
+
+        .home-card {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            max-width: 420px;
             width: 100%;
-            height: 30px;
-            filter: invert(80%) hue-rotate(180deg) brightness(1.2);
+            animation: fadeUp 0.7s ease forwards;
+            overflow: hidden;
+        }
+
+        .home-card::before {
+            content: '';
+            position: absolute;
+            top: -60px; left: 50%;
+            transform: translateX(-50%);
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .avatar-wrap {
+            position: relative;
+            width: 110px; height: 110px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .avatar-wrap img {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .avatar-wrap:hover img { transform: scale(1.05); }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px dashed rgba(126,184,212,0.3);
+            animation: spin 12s linear infinite;
+        }
+
+        .home-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent2);
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .home-sub {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 32px;
+            background: linear-gradient(135deg, var(--accent), #5a9bb8);
+            color: var(--bg);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.03em;
+            animation: pulse-ring 3s ease infinite;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(126,184,212,0.35);
+        }
+
+        /* ---- PROJECT PAGE ---- */
+        #project-page {
+            display: none;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 8px 0;
+            margin-bottom: 40px;
+            transition: color 0.3s;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .back-btn:hover { color: var(--accent); }
+
+        /* Bio */
+        .bio-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        @media(max-width: 640px) {
+            .bio-section { grid-template-columns: 1fr; }
+        }
+
+        .bio-left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .bio-avatar-wrap {
+            position: relative;
+            width: 90px; height: 90px;
+        }
+
+        .bio-avatar-wrap img {
+            width: 90px; height: 90px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .online-dot {
+            position: absolute;
+            bottom: -3px; right: -3px;
+            width: 16px; height: 16px;
+            background: #4ade80;
+            border-radius: 50%;
+            border: 3px solid var(--surface);
+        }
+
+        .bio-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.9rem;
+            color: var(--text);
+            line-height: 1.1;
+        }
+
+        .bio-name span { color: var(--accent); }
+
+        .bio-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .social-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .skills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            padding: 5px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-family: 'DM Mono', monospace;
+            background: var(--surface2);
+            transition: all 0.3s;
+        }
+
+        .skill-tag:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* ---- MUSIC PLAYER ---- */
+        .player-wrap {
+            grid-column: span 1;
+            align-self: start;
+        }
+
+        .player-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .player-card::before {
+            content: '';
+            position: absolute;
+            top: -40px; right: -40px;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+            pointer-events: none;
+        }
+
+        .player-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .disc {
+            width: 58px; height: 58px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #1a1c28, #2a3040, #1a1c28, #253040);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            transition: animation 0.3s;
+        }
+
+        .disc.playing { animation: spin 4s linear infinite; }
+
+        .disc::after {
+            content: '';
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            position: absolute;
+        }
+
+        .track-info { flex: 1; min-width: 0; }
+
+        .track-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 4px;
+        }
+
+        .track-artist {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            font-family: 'DM Mono', monospace;
+        }
+
+        /* Waveform visualizer */
+        .wave-bars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 28px;
+            margin-bottom: 16px;
+        }
+
+        .wave-bar {
+            flex: 1;
+            background: var(--accent);
+            border-radius: 3px;
+            height: 4px;
+            opacity: 0.4;
+            transition: height 0.1s;
+        }
+
+        .wave-bar.active {
+            animation: wave 0.8s ease infinite;
+            opacity: 1;
+        }
+
+        .wave-bar:nth-child(2n) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(3n) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(4n) { animation-delay: 0.15s; }
+        .wave-bar:nth-child(5n) { animation-delay: 0.05s; }
+
+        /* Progress bar */
+        .progress-wrap {
+            margin-bottom: 14px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--surface2);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            border-radius: 4px;
+            width: 0%;
+            position: relative;
+            transition: width 0.1s linear;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: -5px; top: -4px;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent2);
+            box-shadow: 0 0 8px var(--accent-glow);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .progress-bar:hover .progress-fill::after { opacity: 1; }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            font-family: 'DM Mono', monospace;
+        }
+
+        /* Controls */
+        .controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .ctrl-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .ctrl-btn:hover { color: var(--accent); }
+
+        .play-pause-btn {
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: none;
+            cursor: pointer;
+            color: var(--bg);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(126,184,212,0.4);
+        }
+
+        .play-pause-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 24px rgba(126,184,212,0.55);
+        }
+
+        .bottom-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .vol-icon {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .vol-slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            background: var(--surface2);
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .vol-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 16px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--accent);
+            font-size: 0.78rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Mono', monospace;
+            font-weight: 500;
+        }
+
+        .download-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+        }
+
+        /* ---- PROJECTS ---- */
+        .section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 24px;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px; margin-top: 20px;
-            padding-bottom: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
         }
 
         .project-card {
-            background-color: var(--bg-darker);
-            padding: 25px; border-radius: 12px;
-            border-left: 4px solid var(--muted-blue);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none; color: inherit; display: block;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 22px;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.35s;
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
-            background-color: var(--card-bg);
-            box-shadow: 0 10px 20px rgba(146, 185, 214, 0.15);
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+        }
+
+        .project-card:hover::before { opacity: 1; }
+
+        .card-icon {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+        }
+
+        .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .card-desc {
+            font-size: 0.83rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .lang-tag {
-            display: inline-block; margin-top: 15px; font-size: 0.75rem;
-            padding: 4px 12px; border-radius: 6px;
-            background: rgba(146, 185, 214, 0.15); color: var(--muted-blue);
-            font-weight: bold;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-dim);
         }
 
-        .play-btn {
-            display: inline-block; margin-top: 15px; margin-left: 10px;
-            padding: 4px 15px; font-size: 0.75rem;
-            background-color: var(--muted-blue); color: var(--bg-darker);
-            border-radius: 6px; font-weight: bold; text-decoration: none;
-            transition: 0.3s;
+        .open-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            padding: 4px 12px;
+            border-radius: 6px;
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s;
         }
 
-        .btn {
-            display: inline-block; padding: 12px 35px;
-            background-color: var(--muted-blue); color: var(--bg-darker);
-            font-weight: bold; border-radius: 50px; cursor: pointer;
-            border: none; transition: all 0.3s;
+        .open-btn:hover {
+            background: var(--accent2);
+            transform: scale(1.04);
         }
-        .btn:hover { background-color: #7ba8c7; transform: translateY(-3px); }
-
-        .back-link { display: inline-block; margin: 20px 0; color: var(--text-dim); text-decoration: none; }
-        .back-link:hover { color: var(--muted-blue); }
     </style>
 </head>
 <body>
 
-    <div class="page-wrapper" id="main-wrapper">
-        <div id="home-page" class="container fade-in">
-            <div class="profile-img" style="margin-bottom: 1rem;">
+<!-- HOME PAGE -->
+<div id="home-page">
+    <div class="home-card">
+        <div class="avatar-wrap" style="animation: float 4s ease infinite;">
+            <div class="avatar-ring"></div>
+            <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
+        </div>
+        <div class="home-name">Rayhand</div>
+        <div class="home-sub">Developer · Jakarta</div>
+        <button class="btn-explore" onclick="showProjects()">
+            <i class="fa-solid fa-compass"></i> Jelajahi Portfolio
+        </button>
+    </div>
+</div>
+
+<!-- PROJECT PAGE -->
+<div id="project-page">
+    <button class="back-btn" onclick="showHome()">
+        <i class="fa-solid fa-arrow-left"></i> cd ../home
+    </button>
+
+    <!-- BIO SECTION -->
+    <div class="bio-section">
+        <div class="bio-left">
+            <div class="bio-avatar-wrap">
                 <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
+                <div class="online-dot"></div>
             </div>
-            <h1>Halo!</h1>
-            <p style="margin-bottom: 1.5rem;">Selamat datang di website Rayhand.</p>
             <div>
-                <button class="btn" onclick="showProjects()">Jelajahi Lebih Lanjut</button>
+                <div class="bio-name">Ray<span>hand</span></div>
+                <div class="bio-desc">Pengembang berbasis JavaScript &amp; Python. Suka bangun tools, bots, dan hal-hal yang berguna.</div>
+            </div>
+            <div class="social-row">
+                <a href="https://github.com/Ryhandd" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="https://www.instagram.com/rayhand_wumu" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+            </div>
+            <div class="skills-wrap">
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Java</span>
             </div>
         </div>
 
-        <div id="project-page" class="fade-in">
-            <a href="javascript:void(0)" class="back-link" onclick="showHome()"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-            
-            <div class="bio-section">
-                <div class="profile-img">
-                    <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
-                </div>
-                <h2>Tentang Saya</h2>
-                <p>Seorang pengembang berbasis JavaScript dan Python.</p>
-                
-                <div class="social-links">
-                    <a href="https://github.com/Ryhandd" target="_blank"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.instagram.com/rayhand_wumu" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-
-                <div class="skills-container">
-                    <span class="skill-tag">Linux</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">Java</span>
-                </div>
-
-                <div class="music-player">
-                    <div class="music-info">
-                        <span class="music-title"><i class="fa-solid fa-headphones"></i> Summertime.mp3</span>
-                        <audio controls>
-                            <source src="Summertime.mp3" type="audio/mpeg">
-                            Browser kamu tidak mendukung audio player.
-                        </audio>
+        <!-- MUSIC PLAYER -->
+        <div class="player-wrap">
+            <div class="player-card">
+                <div class="player-header">
+                    <div class="disc" id="disc">
+                        <!-- inner dot via ::after -->
+                    </div>
+                    <div class="track-info">
+                        <div class="track-title">Summertime</div>
+                        <div class="track-artist">Musik Favorit</div>
                     </div>
                 </div>
+
+                <!-- Waveform -->
+                <div class="wave-bars" id="waveBars">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+
+                <!-- Progress -->
+                <div class="progress-wrap">
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-row">
+                        <span id="currentTime">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls-row">
+                    <button class="ctrl-btn" onclick="seekBackward()" title="Mundur 10s">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlay()">
+                        <i class="fa-solid fa-play" id="playIcon"></i>
+                    </button>
+                    <button class="ctrl-btn" onclick="seekForward()" title="Maju 10s">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+
+                <!-- Volume + Download -->
+                <div class="bottom-row">
+                    <i class="fa-solid fa-volume-low vol-icon"></i>
+                    <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.02" value="1" oninput="setVolume(this.value)">
+                    <a href="Summertime.mp3" download="Summertime.mp3" class="download-btn">
+                        <i class="fa-solid fa-download"></i> Download
+                    </a>
+                </div>
             </div>
 
-            <h2>Projek Unggulan</h2>
-            <div class="project-grid">
-                <a href="https://github.com/Ryhandd/RSniffer" target="_blank" class="project-card">
-                    <h3>RSniffer</h3>
-                    <p>Network tool berbasis Linux untuk memblokir, membatasi bandwidth, dan sniffing IP.</p>
-                    <span class="lang-tag">Python / Linux</span>
-                </a>
-                
-                <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
-                    <h3>RyzuBot</h3>
-                    <p>Automasi bot WhatsApp serbaguna dengan performa tinggi.</p>
-                    <span class="lang-tag">JavaScript</span>
-                </a>
-                
-                <div class="project-card">
-                    <a href="https://github.com/Ryhandd/RoomChat" target="_blank" style="text-decoration:none; color:inherit;">
-                        <h3>RoomChat</h3>
-                        <p>Website chatting real-time berbasis room menggunakan WebSockets.</p>
-                    </a>
-                    <span class="lang-tag">JavaScript</span>
-                    <a href="https://e9e82fc3-695f-49b3-b4dd-4e11509dd67b-00-2hyb6csz8yb82.pike.replit.dev/" target="_blank" class="play-btn"><i class="fa-solid fa-paper-plane"></i> Open App</a>
-                </div>
-                
-                <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
-                    <h3>SensorKamera</h3>
-                    <p>Implementasi deteksi sensor kamera menggunakan Python.</p>
-                    <span class="lang-tag">Python</span>
-                </a>
-                
-                <div class="project-card">
-                    <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" style="text-decoration:none; color:inherit;">
-                        <h3>SpaceDodge</h3>
-                        <p>Game arcade sederhana.</p>
-                    </a>
-                    <span class="lang-tag">JavaScript</span>
-                    <a href="https://space-dodge-theta.vercel.app/" target="_blank" class="play-btn"><i class="fa-solid fa-gamepad"></i> Play Game</a>
-                </div>
-            </div>
+            <!-- Hidden audio element -->
+            <audio id="audioPlayer" preload="metadata">
+                <source src="Summertime.mp3" type="audio/mpeg">
+            </audio>
         </div>
     </div>
 
-    <script>
-        const wrapper = document.getElementById('main-wrapper');
-        
-        function showProjects() {
-            document.getElementById('home-page').style.display = 'none';
-            document.getElementById('project-page').style.display = 'block';
-            
-            document.body.style.overflow = 'auto';
-            wrapper.style.alignItems = 'flex-start'; 
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    <!-- PROJECTS -->
+    <div class="section-label">// portfolio</div>
+    <div class="section-title">Projek Unggulan</div>
 
-        function showHome() {
-            document.getElementById('project-page').style.display = 'none';
-            document.getElementById('home-page').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            wrapper.style.alignItems = 'center';
-            window.scrollTo(0, 0);
+    <div class="project-grid">
+        <a href="https://github.com/Ryhandd/RSniffer" target="_blank" class="project-card">
+            <div class="card-icon">🔍</div>
+            <div class="card-title">RSniffer</div>
+            <div class="card-desc">Network tool berbasis Linux untuk memblokir, membatasi bandwidth, dan sniffing IP.</div>
+            <div class="card-footer">
+                <span class="lang-tag">Python</span>
+                <span class="lang-tag">Linux</span>
+            </div>
+        </a>
+
+        <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
+            <div class="card-icon">🤖</div>
+            <div class="card-title">RyzuBot</div>
+            <div class="card-desc">Automasi bot WhatsApp serbaguna dengan performa tinggi dan fitur lengkap.</div>
+            <div class="card-footer">
+                <span class="lang-tag">JavaScript</span>
+            </div>
+        </a>
+
+        <div class="project-card" style="cursor:default;">
+            <div class="card-icon">💬</div>
+            <div class="card-title">RoomChat</div>
+            <div class="card-desc">Website chatting real-time berbasis room menggunakan WebSockets.</div>
+            <div class="card-footer">
+                <span class="lang-tag">JavaScript</span>
+                <a href="https://e9e82fc3-695f-49b3-b4dd-4e11509dd67b-00-2hyb6csz8yb82.pike.replit.dev/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+                    <i class="fa-solid fa-paper-plane"></i> Open
+                </a>
+            </div>
+        </div>
+
+        <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
+            <div class="card-icon">📷</div>
+            <div class="card-title">SensorKamera</div>
+            <div class="card-desc">Implementasi deteksi sensor kamera menggunakan Python.</div>
+            <div class="card-footer">
+                <span class="lang-tag">Python</span>
+            </div>
+        </a>
+
+        <div class="project-card" style="cursor:default;">
+            <div class="card-icon">🚀</div>
+            <div class="card-title">SpaceDodge</div>
+            <div class="card-desc">Game arcade sederhana dengan kontrol yang adiktif.</div>
+            <div class="card-footer">
+                <span class="lang-tag">JavaScript</span>
+                <a href="https://space-dodge-theta.vercel.app/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+                    <i class="fa-solid fa-gamepad"></i> Play
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById('audioPlayer');
+    const playIcon = document.getElementById('playIcon');
+    const disc = document.getElementById('disc');
+    const progressFill = document.getElementById('progressFill');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
+    const progressBar = document.getElementById('progressBar');
+    const waveBars = document.querySelectorAll('.wave-bar');
+    let isPlaying = false;
+
+    function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            audio.play();
         }
-    </script>
+    }
+
+    audio.addEventListener('play', () => {
+        isPlaying = true;
+        playIcon.className = 'fa-solid fa-pause';
+        disc.classList.add('playing');
+        waveBars.forEach(b => b.classList.add('active'));
+    });
+
+    audio.addEventListener('pause', () => {
+        isPlaying = false;
+        playIcon.className = 'fa-solid fa-play';
+        disc.classList.remove('playing');
+        waveBars.forEach(b => b.classList.remove('active'));
+    });
+
+    audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = pct + '%';
+        currentTimeEl.textContent = formatTime(audio.currentTime);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(audio.duration);
+    });
+
+    progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const ratio = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = ratio * audio.duration;
+    });
+
+    function seekBackward() { audio.currentTime = Math.max(0, audio.currentTime - 10); }
+    function seekForward() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 10); }
+    function setVolume(v) { audio.volume = v; }
+
+    // Navigation
+    function showProjects() {
+        document.getElementById('home-page').style.display = 'none';
+        document.getElementById('project-page').style.display = 'block';
+        document.body.style.overflowY = 'auto';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showHome() {
+        audio.pause();
+        document.getElementById('project-page').style.display = 'none';
+        document.getElementById('home-page').style.display = 'flex';
+        document.body.style.overflowY = 'hidden';
+    }
+
+    // Start with overflow hidden
+    document.body.style.overflowY = 'hidden';
+</script>
 </body>
 </html>
