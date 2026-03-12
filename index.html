@@ -42,7 +42,6 @@
             overflow-x: hidden;
         }
 
-        /* Grain overlay */
         body::before {
             content: '';
             position: fixed;
@@ -53,7 +52,6 @@
             opacity: 0.5;
         }
 
-        /* ---- HOME PAGE ---- */
         #home-page {
             display: flex;
             align-items: center;
@@ -151,7 +149,6 @@
             box-shadow: 0 10px 30px rgba(126,184,212,0.35);
         }
 
-        /* ---- PROJECT PAGE ---- */
         #project-page {
             display: none;
             max-width: 960px;
@@ -177,8 +174,7 @@
         }
 
         .back-btn:hover { color: var(--accent); }
-
-        /* Bio */
+        
         .bio-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -281,7 +277,6 @@
             border-color: var(--accent);
         }
 
-        /* ---- MUSIC PLAYER ---- */
         .player-wrap {
             grid-column: span 1;
             align-self: start;
@@ -354,7 +349,6 @@
             font-family: 'DM Mono', monospace;
         }
 
-        /* Waveform visualizer */
         .wave-bars {
             display: flex;
             align-items: center;
@@ -382,7 +376,6 @@
         .wave-bar:nth-child(4n) { animation-delay: 0.15s; }
         .wave-bar:nth-child(5n) { animation-delay: 0.05s; }
 
-        /* Progress bar */
         .progress-wrap {
             margin-bottom: 14px;
         }
@@ -428,7 +421,6 @@
             font-family: 'DM Mono', monospace;
         }
 
-        /* Controls */
         .controls-row {
             display: flex;
             align-items: center;
@@ -637,7 +629,6 @@
 </head>
 <body>
 
-<!-- HOME PAGE -->
 <div id="home-page">
     <div class="home-card">
         <div class="avatar-wrap" style="animation: float 4s ease infinite;">
@@ -652,13 +643,11 @@
     </div>
 </div>
 
-<!-- PROJECT PAGE -->
 <div id="project-page">
     <button class="back-btn" onclick="showHome()">
         <i class="fa-solid fa-arrow-left"></i> cd ../home
     </button>
 
-    <!-- BIO SECTION -->
     <div class="bio-section">
         <div class="bio-left">
             <div class="bio-avatar-wrap">
@@ -686,12 +675,10 @@
             </div>
         </div>
 
-        <!-- MUSIC PLAYER -->
         <div class="player-wrap">
             <div class="player-card">
                 <div class="player-header">
                     <div class="disc" id="disc">
-                        <!-- inner dot via ::after -->
                     </div>
                     <div class="track-info">
                         <div class="track-title">Summertime</div>
@@ -699,7 +686,6 @@
                     </div>
                 </div>
 
-                <!-- Waveform -->
                 <div class="wave-bars" id="waveBars">
                     <div class="wave-bar"></div>
                     <div class="wave-bar"></div>
@@ -723,7 +709,6 @@
                     <div class="wave-bar"></div>
                 </div>
 
-                <!-- Progress -->
                 <div class="progress-wrap">
                     <div class="progress-bar" id="progressBar">
                         <div class="progress-fill" id="progressFill"></div>
@@ -734,7 +719,6 @@
                     </div>
                 </div>
 
-                <!-- Controls -->
                 <div class="controls-row">
                     <button class="ctrl-btn" onclick="seekBackward()" title="Mundur 10s">
                         <i class="fa-solid fa-rotate-left"></i>
@@ -747,7 +731,6 @@
                     </button>
                 </div>
 
-                <!-- Volume + Download -->
                 <div class="bottom-row">
                     <i class="fa-solid fa-volume-low vol-icon"></i>
                     <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.02" value="1" oninput="setVolume(this.value)">
@@ -757,14 +740,12 @@
                 </div>
             </div>
 
-            <!-- Hidden audio element -->
             <audio id="audioPlayer" preload="metadata">
                 <source src="Summertime.mp3" type="audio/mpeg">
             </audio>
         </div>
     </div>
 
-    <!-- PROJECTS -->
     <div class="section-label">// portfolio</div>
     <div class="section-title">Projek Unggulan</div>
 
@@ -883,7 +864,6 @@
     function seekForward() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 10); }
     function setVolume(v) { audio.volume = v; }
 
-    // Navigation
     function showProjects() {
         document.getElementById('home-page').style.display = 'none';
         document.getElementById('project-page').style.display = 'block';
@@ -898,7 +878,6 @@
         document.body.style.overflowY = 'hidden';
     }
 
-    // Start with overflow hidden
     document.body.style.overflowY = 'hidden';
 </script>
 </body>
