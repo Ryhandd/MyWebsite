@@ -41,7 +41,7 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
+        
         body::before {
             content: '';
             position: fixed;
@@ -174,7 +174,7 @@
         }
 
         .back-btn:hover { color: var(--accent); }
-        
+
         .bio-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -232,7 +232,6 @@
         .social-row {
             display: flex;
             gap: 12px;
-            flex-wrap: wrap;
         }
 
         .social-btn {
@@ -456,6 +455,8 @@
             justify-content: center;
             transition: all 0.3s;
             box-shadow: 0 4px 20px rgba(126,184,212,0.4);
+            position: relative;
+            z-index: 2;
         }
 
         .play-pause-btn:hover {
@@ -517,7 +518,6 @@
             border-color: var(--accent);
         }
 
-        /* ---- PROJECTS ---- */
         .section-label {
             font-family: 'DM Mono', monospace;
             font-size: 0.72rem;
@@ -595,6 +595,8 @@
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .lang-tag {
@@ -620,6 +622,8 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.25s;
+            position: relative;
+            z-index: 2;
         }
 
         .open-btn:hover {
@@ -637,7 +641,7 @@
             <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
         </div>
         <div class="home-name">Rayhand</div>
-        <div class="home-sub">Developer · Manado</div>
+        <div class="home-sub">Developer · Jakarta</div>
         <button class="btn-explore" onclick="showProjects()">
             <i class="fa-solid fa-compass"></i> Jelajahi Portfolio
         </button>
@@ -646,7 +650,7 @@
 
 <div id="project-page">
     <button class="back-btn" onclick="showHome()">
-        <i class="fa-solid fa-arrow-left"></i> kembali
+        <i class="fa-solid fa-arrow-left"></i> cd ../home
     </button>
 
     <div class="bio-section">
@@ -656,8 +660,8 @@
                 <div class="online-dot"></div>
             </div>
             <div>
-                <div class="bio-name">Ray<span>hand</span> N. <span>U.</span> Wu<span>mu</span></div>
-                <div class="bio-desc">Pengembang berbasis JavaScript &amp; Python. Hobi membuat tools, bot, dan hal-hal lain yang berguna.</div>
+                <div class="bio-name">Ray<span>hand</span></div>
+                <div class="bio-desc">Pengembang berbasis JavaScript &amp; Python. Suka bangun tools, bots, dan hal-hal yang berguna.</div>
             </div>
             <div class="social-row">
                 <a href="https://github.com/Ryhandd" target="_blank" class="social-btn">
@@ -665,9 +669,6 @@
                 </a>
                 <a href="https://www.instagram.com/rayhand_wumu" target="_blank" class="social-btn">
                     <i class="fa-brands fa-instagram"></i> Instagram
-                </a>
-                <a href="https://wa.me/628971614687" target="_blank" class="social-btn">
-                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
             <div class="skills-wrap">
@@ -686,7 +687,7 @@
                     </div>
                     <div class="track-info">
                         <div class="track-title">Summertime</div>
-                        <div class="track-artist">My Chemical Romance</div>
+                        <div class="track-artist">Musik Favorit</div>
                     </div>
                 </div>
 
@@ -750,7 +751,7 @@
         </div>
     </div>
 
-    <div class="section-label">portfolio</div>
+    <div class="section-label">// portfolio</div>
     <div class="section-title">Projek Unggulan</div>
 
     <div class="project-grid">
@@ -779,7 +780,7 @@
             <div class="card-desc">Website chatting real-time berbasis room menggunakan WebSockets.</div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
-                <a href="https://ryzu-roomchat.up.railway.app/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+                <a href="https://e9e82fc3-695f-49b3-b4dd-4e11509dd67b-00-2hyb6csz8yb82.pike.replit.dev/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
                     <i class="fa-solid fa-paper-plane"></i> Open
                 </a>
             </div>
