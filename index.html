@@ -32,7 +32,6 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes wave { 0%,100% { height: 6px; } 50% { height: 22px; } }
         @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 
         body {
             font-family: 'Outfit', sans-serif;
@@ -163,7 +162,6 @@
             gap: 8px;
             color: var(--text-dim);
             font-size: 0.85rem;
-            text-decoration: none;
             cursor: pointer;
             border: none;
             background: none;
@@ -232,6 +230,7 @@
         .social-row {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .social-btn {
@@ -272,15 +271,9 @@
             transition: all 0.3s;
         }
 
-        .skill-tag:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
+        .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
 
-        .player-wrap {
-            grid-column: span 1;
-            align-self: start;
-        }
+        .player-wrap { align-self: start; }
 
         .player-card {
             background: var(--surface);
@@ -317,7 +310,6 @@
             justify-content: center;
             flex-shrink: 0;
             position: relative;
-            transition: animation 0.3s;
         }
 
         .disc.playing { animation: spin 4s linear infinite; }
@@ -363,7 +355,6 @@
             border-radius: 3px;
             height: 4px;
             opacity: 0.4;
-            transition: height 0.1s;
         }
 
         .wave-bar.active {
@@ -376,9 +367,7 @@
         .wave-bar:nth-child(4n) { animation-delay: 0.15s; }
         .wave-bar:nth-child(5n) { animation-delay: 0.05s; }
 
-        .progress-wrap {
-            margin-bottom: 14px;
-        }
+        .progress-wrap { margin-bottom: 14px; }
 
         .progress-bar {
             width: 100%;
@@ -470,11 +459,7 @@
             gap: 10px;
         }
 
-        .vol-icon {
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            flex-shrink: 0;
-        }
+        .vol-icon { color: var(--text-dim); font-size: 0.8rem; flex-shrink: 0; }
 
         .vol-slider {
             flex: 1;
@@ -512,11 +497,7 @@
             font-weight: 500;
         }
 
-        .download-btn:hover {
-            background: var(--accent);
-            color: var(--bg);
-            border-color: var(--accent);
-        }
+        .download-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
         .section-label {
             font-family: 'DM Mono', monospace;
@@ -555,6 +536,7 @@
             overflow: hidden;
         }
 
+        /* KEY FIX: pointer-events: none on the glow overlay so it never blocks clicks */
         .project-card::before {
             content: '';
             position: absolute;
@@ -562,26 +544,20 @@
             background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
             opacity: 0;
             transition: opacity 0.35s;
+            pointer-events: none;
         }
 
         .project-card:hover {
             border-color: var(--accent);
             transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--border);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.4);
         }
 
         .project-card:hover::before { opacity: 1; }
 
-        .card-icon {
-            font-size: 1.4rem;
-            margin-bottom: 2px;
-        }
+        .card-icon { font-size: 1.4rem; margin-bottom: 2px; }
 
-        .card-title {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text);
-        }
+        .card-title { font-weight: 600; font-size: 1rem; color: var(--text); }
 
         .card-desc {
             font-size: 0.83rem;
@@ -626,10 +602,7 @@
             z-index: 2;
         }
 
-        .open-btn:hover {
-            background: var(--accent2);
-            transform: scale(1.04);
-        }
+        .open-btn:hover { background: var(--accent2); transform: scale(1.04); }
     </style>
 </head>
 <body>
@@ -686,8 +659,7 @@
         <div class="player-wrap">
             <div class="player-card">
                 <div class="player-header">
-                    <div class="disc" id="disc">
-                    </div>
+                    <div class="disc" id="disc"></div>
                     <div class="track-info">
                         <div class="track-title">Summertime</div>
                         <div class="track-artist">My Chemical Romance</div>
@@ -695,26 +667,16 @@
                 </div>
 
                 <div class="wave-bars" id="waveBars">
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
-                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div>
                 </div>
 
                 <div class="progress-wrap">
@@ -731,7 +693,7 @@
                     <button class="ctrl-btn" onclick="seekBackward()" title="Mundur 10s">
                         <i class="fa-solid fa-rotate-left"></i>
                     </button>
-                    <button class="play-pause-btn" id="playPauseBtn" onclick="togglePlay()">
+                    <button class="play-pause-btn" onclick="togglePlay()">
                         <i class="fa-solid fa-play" id="playIcon"></i>
                     </button>
                     <button class="ctrl-btn" onclick="seekForward()" title="Maju 10s">
@@ -741,13 +703,12 @@
 
                 <div class="bottom-row">
                     <i class="fa-solid fa-volume-low vol-icon"></i>
-                    <input type="range" class="vol-slider" id="volSlider" min="0" max="1" step="0.02" value="1" oninput="setVolume(this.value)">
+                    <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="1" oninput="setVolume(this.value)">
                     <a href="Summertime.mp3" download="Summertime.mp3" class="download-btn">
                         <i class="fa-solid fa-download"></i> Download
                     </a>
                 </div>
             </div>
-
             <audio id="audioPlayer" preload="metadata">
                 <source src="Summertime.mp3" type="audio/mpeg">
             </audio>
@@ -758,25 +719,23 @@
     <div class="section-title">Projek Unggulan</div>
 
     <div class="project-grid">
+
         <a href="https://github.com/Ryhandd/RSniffer" target="_blank" class="project-card">
             <div class="card-icon">🔍</div>
             <div class="card-title">RSniffer</div>
             <div class="card-desc">Network tool berbasis Linux untuk memblokir, membatasi bandwidth, dan sniffing IP.</div>
-            <div class="card-footer">
-                <span class="lang-tag">Python</span>
-            </div>
+            <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
         <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
             <div class="card-icon">🤖</div>
             <div class="card-title">RyzuBot</div>
             <div class="card-desc">Automasi bot WhatsApp serbaguna dengan performa tinggi dan fitur lengkap.</div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-            </div>
+            <div class="card-footer"><span class="lang-tag">JavaScript</span></div>
         </a>
 
-        <div class="project-card" style="cursor:default;">
+        <!-- Card ke GitHub, tombol Open ke live app -->
+        <div class="project-card" onclick="window.open('https://github.com/Ryhandd/RoomChat','_blank')" style="cursor:pointer;">
             <div class="card-icon">💬</div>
             <div class="card-title">RoomChat</div>
             <div class="card-desc">Website chatting real-time berbasis room menggunakan WebSockets.</div>
@@ -792,12 +751,11 @@
             <div class="card-icon">📷</div>
             <div class="card-title">SensorKamera</div>
             <div class="card-desc">Implementasi deteksi sensor kamera menggunakan Python.</div>
-            <div class="card-footer">
-                <span class="lang-tag">Python</span>
-            </div>
+            <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
-        <div class="project-card" style="cursor:default;">
+        <!-- Card ke GitHub, tombol Play ke live game -->
+        <div class="project-card" onclick="window.open('https://github.com/Ryhandd/SpaceDodge','_blank')" style="cursor:pointer;">
             <div class="card-icon">🚀</div>
             <div class="card-title">SpaceDodge</div>
             <div class="card-desc">Game arcade sederhana dengan kontrol yang adiktif.</div>
@@ -808,6 +766,7 @@
                 </a>
             </div>
         </div>
+
     </div>
 </div>
 
@@ -829,11 +788,7 @@
     }
 
     function togglePlay() {
-        if (isPlaying) {
-            audio.pause();
-        } else {
-            audio.play();
-        }
+        if (isPlaying) { audio.pause(); } else { audio.play(); }
     }
 
     audio.addEventListener('play', () => {
@@ -852,8 +807,7 @@
 
     audio.addEventListener('timeupdate', () => {
         if (!audio.duration) return;
-        const pct = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = pct + '%';
+        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
         currentTimeEl.textContent = formatTime(audio.currentTime);
     });
 
@@ -863,8 +817,7 @@
 
     progressBar.addEventListener('click', (e) => {
         const rect = progressBar.getBoundingClientRect();
-        const ratio = (e.clientX - rect.left) / rect.width;
-        audio.currentTime = ratio * audio.duration;
+        audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
     });
 
     function seekBackward() { audio.currentTime = Math.max(0, audio.currentTime - 10); }
