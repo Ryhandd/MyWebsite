@@ -734,17 +734,18 @@
             <div class="card-footer"><span class="lang-tag">JavaScript</span></div>
         </a>
 
-        <div class="project-card" onclick="window.open('https://github.com/Ryhandd/RoomChat','_blank')" style="cursor:pointer;">
+        <!-- Card ke GitHub, tombol Open ke live app -->
+        <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
             <div class="card-icon">💬</div>
             <div class="card-title">RoomChat</div>
             <div class="card-desc">Website chatting real-time berbasis room menggunakan WebSockets.</div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
-                <a href="https://ryzu-roomchat.up.railway.app/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://ryzu-roomchat.up.railway.app/','_blank');})(event)">
                     <i class="fa-solid fa-paper-plane"></i> Open
-                </a>
+                </span>
             </div>
-        </div>
+        </a>
 
         <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
             <div class="card-icon">📷</div>
@@ -753,17 +754,18 @@
             <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
-        <div class="project-card" onclick="window.open('https://github.com/Ryhandd/SpaceDodge','_blank')" style="cursor:pointer;">
+        <!-- Card ke GitHub, tombol Play ke live game -->
+        <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
             <div class="card-icon">🚀</div>
             <div class="card-title">SpaceDodge</div>
             <div class="card-desc">Game arcade sederhana dengan kontrol yang adiktif.</div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
-                <a href="https://space-dodge-theta.vercel.app/" target="_blank" class="open-btn" onclick="event.stopPropagation()">
+                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://space-dodge-theta.vercel.app/','_blank');})(event)">
                     <i class="fa-solid fa-gamepad"></i> Play
-                </a>
+                </span>
             </div>
-        </div>
+        </a>
 
     </div>
 </div>
