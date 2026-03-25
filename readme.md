@@ -53,11 +53,11 @@ portfolio/
 
 | Nama | Deskripsi | Tech |
 |---|---|---|
-| [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool — block, limit bandwidth, sniffing IP | Python |
-| [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
 | [RoomChat](https://github.com/Ryhandd/RoomChat) | Real-time chat berbasis WebSockets | JavaScript |
-| [SensorKamera](https://github.com/Ryhandd/SensorKamera) | Deteksi sensor kamera | Python |
 | [SpaceDodge](https://github.com/Ryhandd/SpaceDodge) | Game arcade browser | JavaScript |
+| [SensorKamera](https://github.com/Ryhandd/SensorKamera) | Deteksi sensor kamera | Python |
+| [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
+| [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool — block, limit bandwidth, sniffing IP | Python |
 
 ---
 
