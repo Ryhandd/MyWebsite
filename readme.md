@@ -1,62 +1,59 @@
-# 🌐 Rayhand — Personal Portfolio Website
+# Rayhand — Portfolio
 
-Website portfolio pribadi berbasis HTML/CSS/JS murni, tanpa framework. Menampilkan bio, musik favorit, dan projek unggulan.
+Website portfolio pribadi berbasis HTML/CSS/JS murni, tanpa framework.
 
----
-
-## ✨ Fitur
-
-- **Halaman Home** — Landing page dengan animasi avatar dan tombol eksplorasi
-- **Halaman Portfolio** — Bio lengkap, social links, skill tags, music player, dan project cards
-- **Music Player** — Player lengkap dengan:
-  - Disc animasi berputar saat play
-  - Waveform visualizer
-  - Progress bar interaktif (bisa diklik untuk skip)
-  - Tombol skip maju/mundur 10 detik
-  - Volume slider
-  - Tombol download lagu
-- **Project Cards** — Kartu projek dengan hover effect dan tombol Open/Play
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 ---
 
-## 📁 Struktur File
+## Fitur
+
+- Bio, social links, dan skill tags
+- Music player lengkap — disc animasi, waveform visualizer, progress bar interaktif, skip ±10 detik, volume slider, dan tombol download
+- Project cards dengan hover effect, link ke GitHub, dan tombol live demo
+
+---
+
+## Struktur File
 
 ```
 portfolio/
-├── index.html        # File utama website
-├── Summertime.mp3    # File musik (letakkan di folder yang sama)
+├── index.html       # Halaman utama
+├── Summertime.mp3   # File musik (taruh di folder yang sama)
 └── README.md
 ```
 
 ---
 
-## 🚀 Cara Pakai
+## Cara Pakai
 
-1. Clone atau download repo ini
-2. Letakkan file `Summertime.mp3` di folder yang sama dengan `index.html`
-3. Buka `index.html` langsung di browser — tidak perlu server
+1. Clone repo ini
+2. Taruh `Summertime.mp3` di folder yang sama dengan `index.html`
+3. Buka `index.html` di browser — tidak butuh server
 
-> Kalau musik dihosting online, ganti semua `Summertime.mp3` di `index.html` dengan URL langsung ke file audio.
+> Kalau musiknya dihosting online, ganti `src="Summertime.mp3"` dan `href="Summertime.mp3"` dengan URL langsung ke file audio.
 
 ---
 
-## 🛠️ Teknologi
+## Stack
 
-| Teknologi | Kegunaan |
+| | |
 |---|---|
 | HTML5 | Struktur halaman |
-| CSS3 | Styling, animasi, layout grid |
-| Vanilla JavaScript | Logika music player & navigasi |
+| CSS3 | Styling & animasi |
+| Vanilla JS | Music player logic |
 | Google Fonts | DM Serif Display, DM Mono, Outfit |
-| Font Awesome 6 | Icon set |
+| Font Awesome 6 | Icons |
 
 ---
 
-## 📦 Projek yang Ditampilkan
+## Projek
 
-| Projek | Deskripsi | Teknologi |
+| Nama | Deskripsi | Tech |
 |---|---|---|
-| [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool untuk sniffing & manajemen bandwidth | Python, Linux |
+| [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool — block, limit bandwidth, sniffing IP | Python |
 | [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
 | [RoomChat](https://github.com/Ryhandd/RoomChat) | Real-time chat berbasis WebSockets | JavaScript |
 | [SensorKamera](https://github.com/Ryhandd/SensorKamera) | Deteksi sensor kamera | Python |
@@ -64,12 +61,6 @@ portfolio/
 
 ---
 
-## 📬 Kontak
+## Kontak
 
-- GitHub: [@Ryhandd](https://github.com/Ryhandd)
-- Instagram: [@rayhand_wumu](https://www.instagram.com/rayhand_wumu)
-- WhatsApp: [+62 897-1614-687](https://wa.me/628971614687)
-
----
-
-> by Rayhand
+[GitHub](https://github.com/Ryhandd) · [Instagram](https://www.instagram.com/rayhand_wumu) · [WhatsApp](https://wa.me/628971614687)
