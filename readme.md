@@ -12,10 +12,10 @@ Website portfolio pribadi yang dibangun secara mandiri menggunakan murni HTML, C
 
 ## ✨ Fitur Unggulan
 
-* **Modern UI/UX:** Desain *glassmorphism* dan aksen *glow* yang memanjakan mata, lengkap dengan animasi halus.
-* **Custom Music Player:** Pemutar musik bawaan dengan animasi piringan hitam (*disc*), *waveform visualizer*, *progress bar* interaktif, kontrol volume, dan tombol *download*.
-* **Interactive Project Cards:** Efek *hover* dinamis pada daftar proyek yang terhubung langsung ke GitHub atau Live Demo.
-* **Fully Responsive:** Tampilan yang menyesuaikan dengan sempurna di perangkat *mobile* maupun *desktop*.
+- **Modern UI/UX:** Desain *glassmorphism* dan aksen *glow* yang memanjakan mata, lengkap dengan animasi halus.
+- **Custom Music Player:** Pemutar musik bawaan dengan animasi piringan hitam (*disc*), *waveform visualizer*, *progress bar* interaktif, kontrol volume, dan tombol *download*.
+- **Interactive Project Cards:** Efek *hover* dinamis pada daftar proyek yang terhubung langsung ke GitHub atau Live Demo.
+- **Fully Responsive:** Tampilan yang menyesuaikan dengan sempurna di perangkat *mobile* maupun *desktop*.
 
 ---
 
@@ -26,9 +26,11 @@ portfolio/
 ├── index.html       # Struktur utama & styling halaman
 ├── Summertime.mp3   # File audio untuk music player (letakkan di root yang sama)
 └── README.md        # Dokumentasi
+```
+
 ---
 
-## Cara Pakai
+## 🚀 Cara Pakai
 
 1. Clone repo ini
 2. Taruh `Summertime.mp3` di folder yang sama dengan `index.html`
@@ -38,9 +40,9 @@ portfolio/
 
 ---
 
-## Stack
+## 🛠️ Stack
 
-| | |
+| Teknologi | Kegunaan |
 |---|---|
 | HTML5 | Struktur halaman |
 | CSS3 | Styling & animasi |
@@ -50,7 +52,7 @@ portfolio/
 
 ---
 
-## Projek
+## 📁 Projek
 
 | Nama | Deskripsi | Tech |
 |---|---|---|
@@ -63,6 +65,6 @@ portfolio/
 
 ---
 
-## Kontak
+## 📬 Kontak
 
 [GitHub](https://github.com/Ryhandd) · [Instagram](https://www.instagram.com/rayhand_wumu) · [WhatsApp](https://wa.me/628971614687)
