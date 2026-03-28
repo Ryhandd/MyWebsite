@@ -1,30 +1,31 @@
-# Rayhand — Portfolio
+# ✦ Rayhand — Personal Portfolio ✦
 
-Website portfolio pribadi berbasis HTML/CSS/JS murni, tanpa framework.
+Website portfolio pribadi yang dibangun secara mandiri menggunakan murni HTML, CSS, dan Vanilla JavaScript tanpa tambahan framework. Didesain dengan antarmuka modern (Dark Mode), elemen interaktif, dan performa yang super ringan.
 
-![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-
----
-
-## Fitur
-
-- Bio, social links, dan skill tags
-- Music player lengkap — disc animasi, waveform visualizer, progress bar interaktif, skip ±10 detik, volume slider, dan tombol download
-- Project cards dengan hover effect, link ke GitHub, dan tombol live demo
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
+</p>
 
 ---
 
-## Struktur File
+## ✨ Fitur Unggulan
 
-```
+* **Modern UI/UX:** Desain *glassmorphism* dan aksen *glow* yang memanjakan mata, lengkap dengan animasi halus.
+* **Custom Music Player:** Pemutar musik bawaan dengan animasi piringan hitam (*disc*), *waveform visualizer*, *progress bar* interaktif, kontrol volume, dan tombol *download*.
+* **Interactive Project Cards:** Efek *hover* dinamis pada daftar proyek yang terhubung langsung ke GitHub atau Live Demo.
+* **Fully Responsive:** Tampilan yang menyesuaikan dengan sempurna di perangkat *mobile* maupun *desktop*.
+
+---
+
+## 📂 Struktur Direktori
+
+```text
 portfolio/
-├── index.html       # Halaman utama
-├── Summertime.mp3   # File musik (taruh di folder yang sama)
-└── README.md
-```
-
+├── index.html       # Struktur utama & styling halaman
+├── Summertime.mp3   # File audio untuk music player (letakkan di root yang sama)
+└── README.md        # Dokumentasi
 ---
 
 ## Cara Pakai
@@ -53,10 +54,11 @@ portfolio/
 
 | Nama | Deskripsi | Tech |
 |---|---|---|
+| [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
 | [RoomChat](https://github.com/Ryhandd/RoomChat) | Real-time chat berbasis WebSockets | JavaScript |
 | [SpaceDodge](https://github.com/Ryhandd/SpaceDodge) | Game arcade browser | JavaScript |
+| [Battery-Limiter](https://github.com/Ryhandd/Battery-Limiter) | Modul Smart Charge Limit | Shell |
 | [SensorKamera](https://github.com/Ryhandd/SensorKamera) | Deteksi sensor kamera | Python |
-| [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
 | [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool — block, limit bandwidth, sniffing IP | Python |
 
 ---
