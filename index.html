@@ -13,32 +13,57 @@
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
     <div class="navbar-inner">
-        <a href="#" class="navbar-logo">
-            <span class="navbar-logo-icon">✦</span>
-            Rayhand
+        <a href="#top" class="navbar-brand" onclick="scrollToSection('top')">
+            <span class="navbar-brand-text">R<span class="brand-accent">.</span></span>
         </a>
-        
         <div class="navbar-links">
-            <a href="#bio" class="navbar-link" data-i18n="nav_about">Tentang</a>
-            <a href="#projects" class="navbar-link" data-i18n="nav_projects">Projek</a>
-            <a href="#gallery" class="navbar-link" data-i18n="nav_gallery">Galeri</a>
+            <a href="#about" class="nav-link" onclick="scrollToSection('about')">
+                <span data-i18n="nav_about">About</span>
+            </a>
+            <a href="#projects" class="nav-link" onclick="scrollToSection('projects')">
+                <span data-i18n="nav_projects">Projects</span>
+            </a>
+            <a href="#gallery" class="nav-link" onclick="scrollToSection('gallery')">
+                <span data-i18n="nav_gallery">Gallery</span>
+            </a>
+            <a href="https://wa.me/628971614687" target="_blank" class="nav-contact-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span data-i18n="nav_contact">Contact</span>
+            </a>
         </div>
-        
-        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle menu">
-            <i class="fa-solid fa-bars"></i>
+        <button class="nav-menu-toggle" id="navMenuToggle" onclick="toggleMobileMenu()">
+            <span></span><span></span><span></span>
         </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="navbar-mobile" id="navbarMobile">
+        <a href="#about" class="nav-mobile-link" onclick="scrollToSection('about'); closeMobileMenu()">
+            <span data-i18n="nav_about">About</span>
+        </a>
+        <a href="#projects" class="nav-mobile-link" onclick="scrollToSection('projects'); closeMobileMenu()">
+            <span data-i18n="nav_projects">Projects</span>
+        </a>
+        <a href="#gallery" class="nav-mobile-link" onclick="scrollToSection('gallery'); closeMobileMenu()">
+            <span data-i18n="nav_gallery">Gallery</span>
+        </a>
+        <a href="https://wa.me/628971614687" target="_blank" class="nav-mobile-link nav-mobile-contact">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span data-i18n="nav_contact">Contact</span>
+        </a>
     </div>
 </nav>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fa-solid fa-arrow-up"></i>
+<!-- SCROLL TO TOP BUTTON -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="scrollToTop()" title="Kembali ke atas">
+    <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<div id="portfolio">
+<div id="portfolio" id="top">
 
-    <div class="lang-switcher">
+    <div id="about" class="lang-switcher">
         <button class="lang-btn active" onclick="setLang('id')">ID</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('ja')">JP</button>
@@ -136,6 +161,7 @@
     </div>
 
     <!-- PROJECTS SECTION -->
+    <div id="projects"></div>
     <div class="section-label" data-i18n="label_portfolio"></div>
     <div class="section-title" data-i18n="title_projects"></div>
 
@@ -213,7 +239,7 @@
     </div>
 
     <!-- GALLERY SECTION -->
-    <div class="gallery-section">
+    <div id="gallery" class="gallery-section">
         <div class="section-label" data-i18n="label_creative"></div>
         <div class="section-title">Galeri Kreatif</div>
         <p class="gallery-intro" data-i18n="gallery_intro"></p>

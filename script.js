@@ -17,9 +17,10 @@ const translations = {
         proj_space:      "Game arcade sederhana dengan kontrol yang adiktif.",
         proj_dam:        "Game Dam online berbasis web dengan sistem multiplayer real-time menggunakan Socket.io, dilengkapi fitur room, mode penonton.",
         footer_rights:   "Hak cipta dilindungi.",
-        nav_about: "Tentang",
-        nav_projects: "Projek", 
-        nav_gallery: "Galeri",
+        nav_about:       "About",
+        nav_projects:    "Projects",
+        nav_gallery:     "Gallery",
+        nav_contact:     "Contact",
     },
     en: {
         bio: "Software developer focused on JavaScript and Python, oriented toward building automation solutions, bots, and network systems. Experienced in crafting efficient applications including real-time services and device optimization tools. Committed to efficiency, scalability, and practical solutions with real impact.",
@@ -36,9 +37,10 @@ const translations = {
         proj_space:      "A simple yet addictive arcade game with tight controls.",
         proj_dam:        "A web-based online Dam (checkers) game with real-time multiplayer via Socket.io, featuring room management and spectator mode.",
         footer_rights:   "All rights reserved.",
-        nav_about: "About",
-        nav_projects: "Projects",
-        nav_gallery: "Gallery",
+        nav_about:       "About",
+        nav_projects:    "Projects",
+        nav_gallery:     "Gallery",
+        nav_contact:     "Contact",
     },
     ja: {
         bio: "JavaScriptとPythonを中心としたソフトウェア開発者。自動化ソリューション、ボット、ネットワークシステムの開発に注力。リアルタイムサービスやデバイス最適化ツールを含む効率的なアプリケーション構築を得意とする。効率性・スケーラビリティ・実用的なインパクトを重視。",
@@ -55,9 +57,10 @@ const translations = {
         proj_space:      "シンプルで中毒性の高いアーケードゲーム。",
         proj_dam:        "Socket.ioによるリアルタイムマルチプレイヤー対応のWebベースダムゲーム。ルーム機能・観戦モードを搭載。",
         footer_rights:   "無断複製・転載を禁じます。",
-        nav_about:     "プロフィール",
-        nav_projects:  "プロジェクト",
-        nav_gallery:   "ギャラリー",
+        nav_about:       "About",
+        nav_projects:    "Projects",
+        nav_gallery:     "ギャラリー",
+        nav_contact:     "連絡",
     }
 };
 
@@ -70,7 +73,6 @@ function setLang(lang) {
     currentLang = lang;
 
     document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'id';
-
     document.body.classList.remove('lang-id', 'lang-en', 'lang-ja');
     document.body.classList.add('lang-' + lang);
 
@@ -80,11 +82,6 @@ function setLang(lang) {
         if (t[key] !== undefined) {
             el.textContent = t[key];
         }
-    });
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang ||
-            (lang === 'ja' && btn.textContent.trim() === 'JP'));
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -98,97 +95,93 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ===========================
-   NAVBAR & BACK TO TOP
+   NAVBAR — SCROLL & ACTIVE LINK
 =========================== */
+const navbar       = document.getElementById('navbar');
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+const navLinks     = document.querySelectorAll('.nav-link');
 
-// Navbar scroll effect & active link
-const navbar = document.getElementById('navbar');
-const navbarLinks = document.querySelectorAll('.navbar-link');
-const navbarToggle = document.getElementById('navbarToggle');
-const navbarMenu = document.querySelector('.navbar-links');
+const sections = [
+    { id: 'about',    link: document.querySelector('.nav-link[href="#about"]') },
+    { id: 'projects', link: document.querySelector('.nav-link[href="#projects"]') },
+    { id: 'gallery',  link: document.querySelector('.nav-link[href="#gallery"]') },
+];
 
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    const y = window.scrollY;
+
+    // Navbar glass effect
+    if (y > 20) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    updateActiveNav();
 
-    // Show/hide back to top button
-    toggleBackToTop();
-});
-
-if (navbarToggle) {
-    navbarToggle.addEventListener('click', () => {
-        navbarMenu.classList.toggle('open');
-        const icon = navbarToggle.querySelector('i');
-        if (navbarMenu.classList.contains('open')) {
-            icon.classList.replace('fa-bars', 'fa-xmark');
-        } else {
-            icon.classList.replace('fa-xmark', 'fa-bars');
-        }
-    });
-}
-
-navbarLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navbarMenu.classList.remove('open');
-        const icon = navbarToggle.querySelector('i');
-        icon.classList.replace('fa-xmark', 'fa-bars');
-    });
-});
-
-function updateActiveNav() {
-    const sections = ['bio', 'projects', 'gallery'];
-    let current = '';
-    
-    sections.forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const sectionTop = section.offsetTop - 100;
-            if (window.scrollY >= sectionTop) {
-                current = sectionId;
-            }
-        }
-    });
-    
-    navbarLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-}
-// Back to Top Button
-const backToTopBtn = document.getElementById('backToTop');
-
-function toggleBackToTop() {
-    if (window.scrollY > 400) {
-        backToTopBtn.classList.add('visible');
+    // Scroll-to-top button visibility
+    if (y > 300) {
+        scrollTopBtn.classList.add('visible');
     } else {
-        backToTopBtn.classList.remove('visible');
+        scrollTopBtn.classList.remove('visible');
     }
-}
 
-if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Active nav link highlighting
+    let currentSection = '';
+    sections.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el) {
+            const top = el.getBoundingClientRect().top;
+            if (top <= 90) currentSection = id;
+        }
     });
+
+    sections.forEach(({ id, link }) => {
+        if (link) link.classList.toggle('active', id === currentSection);
+    });
+});
+
+/* ===========================
+   SMOOTH SCROLL
+=========================== */
+function scrollToSection(id) {
+    if (id === 'top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navH = navbar ? navbar.offsetHeight : 62;
+    const top  = el.getBoundingClientRect().top + window.scrollY - navH - 10;
+    window.scrollTo({ top, behavior: 'smooth' });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    updateActiveNav();
-    
-    const bioSection = document.querySelector('.bio-section');
-    const projectsSection = document.querySelector('.project-grid')?.parentElement;
-    const gallerySection = document.querySelector('.gallery-section');
-    
-    if (bioSection) bioSection.id = 'bio';
-    if (projectsSection) projectsSection.id = 'projects';
-    if (gallerySection) gallerySection.id = 'gallery';
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ===========================
+   MOBILE MENU
+=========================== */
+const navbarMobile  = document.getElementById('navbarMobile');
+const navMenuToggle = document.getElementById('navMenuToggle');
+let mobileOpen = false;
+
+function toggleMobileMenu() {
+    mobileOpen = !mobileOpen;
+    navbarMobile.classList.toggle('open', mobileOpen);
+    navMenuToggle.classList.toggle('open', mobileOpen);
+}
+
+function closeMobileMenu() {
+    mobileOpen = false;
+    navbarMobile.classList.remove('open');
+    navMenuToggle.classList.remove('open');
+}
+
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+    if (mobileOpen && !navbar.contains(e.target)) {
+        closeMobileMenu();
+    }
 });
 
 /* ===========================
