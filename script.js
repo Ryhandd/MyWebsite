@@ -17,6 +17,9 @@ const translations = {
         proj_space:      "Game arcade sederhana dengan kontrol yang adiktif.",
         proj_dam:        "Game Dam online berbasis web dengan sistem multiplayer real-time menggunakan Socket.io, dilengkapi fitur room, mode penonton.",
         footer_rights:   "Hak cipta dilindungi.",
+        nav_about: "Tentang",
+        nav_projects: "Projek", 
+        nav_gallery: "Galeri",
     },
     en: {
         bio: "Software developer focused on JavaScript and Python, oriented toward building automation solutions, bots, and network systems. Experienced in crafting efficient applications including real-time services and device optimization tools. Committed to efficiency, scalability, and practical solutions with real impact.",
@@ -33,6 +36,9 @@ const translations = {
         proj_space:      "A simple yet addictive arcade game with tight controls.",
         proj_dam:        "A web-based online Dam (checkers) game with real-time multiplayer via Socket.io, featuring room management and spectator mode.",
         footer_rights:   "All rights reserved.",
+        nav_about: "About",
+        nav_projects: "Projects",
+        nav_gallery: "Gallery",
     },
     ja: {
         bio: "JavaScriptとPythonを中心としたソフトウェア開発者。自動化ソリューション、ボット、ネットワークシステムの開発に注力。リアルタイムサービスやデバイス最適化ツールを含む効率的なアプリケーション構築を得意とする。効率性・スケーラビリティ・実用的なインパクトを重視。",
@@ -49,6 +55,9 @@ const translations = {
         proj_space:      "シンプルで中毒性の高いアーケードゲーム。",
         proj_dam:        "Socket.ioによるリアルタイムマルチプレイヤー対応のWebベースダムゲーム。ルーム機能・観戦モードを搭載。",
         footer_rights:   "無断複製・転載を禁じます。",
+        nav_about:     "プロフィール",
+        nav_projects:  "プロジェクト",
+        nav_gallery:   "ギャラリー",
     }
 };
 
@@ -60,14 +69,11 @@ let currentLang = 'id';
 function setLang(lang) {
     currentLang = lang;
 
-    // Update html lang attribute
     document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'id';
 
-    // Update body class for font overrides
     document.body.classList.remove('lang-id', 'lang-en', 'lang-ja');
     document.body.classList.add('lang-' + lang);
 
-    // Apply translations to all data-i18n elements
     const t = translations[lang];
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
@@ -76,22 +82,113 @@ function setLang(lang) {
         }
     });
 
-    // Update active button state
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang ||
             (lang === 'ja' && btn.textContent.trim() === 'JP'));
     });
 
-    // Re-check active state more precisely
     document.querySelectorAll('.lang-btn').forEach(btn => {
         const map = { 'ID': 'id', 'EN': 'en', 'JP': 'ja' };
         btn.classList.toggle('active', map[btn.textContent.trim()] === lang);
     });
 }
 
-// Init on load
 document.addEventListener('DOMContentLoaded', () => {
     setLang('id');
+});
+
+/* ===========================
+   NAVBAR & BACK TO TOP
+=========================== */
+
+// Navbar scroll effect & active link
+const navbar = document.getElementById('navbar');
+const navbarLinks = document.querySelectorAll('.navbar-link');
+const navbarToggle = document.getElementById('navbarToggle');
+const navbarMenu = document.querySelector('.navbar-links');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    updateActiveNav();
+
+    // Show/hide back to top button
+    toggleBackToTop();
+});
+
+if (navbarToggle) {
+    navbarToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('open');
+        const icon = navbarToggle.querySelector('i');
+        if (navbarMenu.classList.contains('open')) {
+            icon.classList.replace('fa-bars', 'fa-xmark');
+        } else {
+            icon.classList.replace('fa-xmark', 'fa-bars');
+        }
+    });
+}
+
+navbarLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navbarMenu.classList.remove('open');
+        const icon = navbarToggle.querySelector('i');
+        icon.classList.replace('fa-xmark', 'fa-bars');
+    });
+});
+
+function updateActiveNav() {
+    const sections = ['bio', 'projects', 'gallery'];
+    let current = '';
+    
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                current = sectionId;
+            }
+        }
+    });
+    
+    navbarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
+// Back to Top Button
+const backToTopBtn = document.getElementById('backToTop');
+
+function toggleBackToTop() {
+    if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+}
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateActiveNav();
+    
+    const bioSection = document.querySelector('.bio-section');
+    const projectsSection = document.querySelector('.project-grid')?.parentElement;
+    const gallerySection = document.querySelector('.gallery-section');
+    
+    if (bioSection) bioSection.id = 'bio';
+    if (projectsSection) projectsSection.id = 'projects';
+    if (gallerySection) gallerySection.id = 'gallery';
 });
 
 /* ===========================
