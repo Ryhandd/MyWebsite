@@ -1,70 +1,71 @@
-# ✦ Rayhand — Personal Portfolio ✦
+# ✦ Rayhand N. U. Wumu — Digital Showcase ✦
 
-Website portfolio pribadi yang dibangun secara mandiri menggunakan murni HTML, CSS, dan Vanilla JavaScript tanpa tambahan framework. Didesain dengan antarmuka modern (Dark Mode), elemen interaktif, dan performa yang super ringan.
+[![Vercel Deployment](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://rayhand.vercel.app)
+[![Informatics Student](https://img.shields.io/badge/Status-Informatics%20Student-blue?style=for-the-badge)](https://github.com/Ryhandd)
 
-<p align="left">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
-</p>
+Ini adalah repositori pusat untuk website portofolio pribadi saya. Dibangun dengan fokus pada **performa maksimal, minimalisme, dan estetika modern**. Project ini mencerminkan perjalanan saya sebagai mahasiswa Informatika sekaligus pengembang perangkat lunak.
 
 ---
 
-## ✨ Fitur Unggulan
+## 🚀 Filosofi Teknis
 
-- **Modern UI/UX:** Desain *glassmorphism* dan aksen *glow* yang memanjakan mata, lengkap dengan animasi halus.
-- **Custom Music Player:** Pemutar musik bawaan dengan animasi piringan hitam (*disc*), *waveform visualizer*, *progress bar* interaktif, kontrol volume, dan tombol *download*.
-- **Interactive Project Cards:** Efek *hover* dinamis pada daftar proyek yang terhubung langsung ke GitHub atau Live Demo.
-- **Fully Responsive:** Tampilan yang menyesuaikan dengan sempurna di perangkat *mobile* maupun *desktop*.
+Berbeda dengan kebanyakan portofolio modern yang menggunakan framework berat, website ini dibangun menggunakan **"The Holy Trinity"** pengembangan web tanpa tambahan eksternal:
 
----
-
-## 📂 Struktur Direktori
-
-```text
-portfolio/
-├── index.html       # Struktur utama & styling halaman
-├── Summertime.mp3   # File audio untuk music player (letakkan di root yang sama)
-└── README.md        # Dokumentasi
-```
+- **Murni HTML5 & CSS3:** Mengoptimalkan rendering halaman dan SEO.
+- **Vanilla JavaScript:** Logika fungsional tanpa overhead dari library pihak ketiga.
+- **Ultra Lightweight:** Performa super ringan yang dapat dimuat secara instan di perangkat apapun.
 
 ---
 
-## 🚀 Cara Pakai
+## ✨ Fitur & Integrasi
 
-1. Clone repo ini
-2. Taruh `Summertime.mp3` di folder yang sama dengan `index.html`
-3. Buka `index.html` di browser — tidak butuh server
+### 🎵 Custom Music Player
+Pemutar musik interaktif yang terintegrasi langsung di homepage. Dilengkapi dengan:
+- Animasi piringan hitam (*disc*) yang responsif terhadap status lagu.
+- Waveform visualizer sederhana dan kontrol volume presisi.
 
-> Kalau musiknya dihosting online, ganti `src="Summertime.mp3"` dan `href="Summertime.mp3"` dengan URL langsung ke file audio.
+### 📁 Proyek Unggulan
+Daftar proyek yang dikurasi secara dinamis, mencakup:
+- **Web Development:** Aplikasi real-time dengan WebSockets.
+- **Networking & Security:** Tool sniffing, rate-limiting, dan ARP spoofing berbasis Python.
+- **Android Modding:** Script optimasi sistem (Magisk/KernelSU).
+
+### 🎨 Creative Side Quest (New!)
+Bukan sekadar koding. Section ini menampilkan sisi kreatif saya melalui:
+- **Digital Art:** Eksplorasi desain dan ilustrasi digital.
+- **Analog Sketches:** Coretan tangan sebagai media brainstorming visual.
 
 ---
 
-## 🛠️ Stack
+## 🛠️ Stack & Resource
 
-| Teknologi | Kegunaan |
+| Komponen | Teknologi |
 |---|---|
-| HTML5 | Struktur halaman |
-| CSS3 | Styling & animasi |
-| Vanilla JS | Music player logic |
-| Google Fonts | DM Serif Display, DM Mono, Outfit |
-| Font Awesome 6 | Icons |
+| **Core** | HTML5, CSS3, Vanilla JavaScript |
+| **Fonts** | DM Serif Display, DM Mono, Outfit |
+| **Icons** | Font Awesome 6 |
+| **Deployment** | Vercel |
 
 ---
 
-## 📁 Projek
+## 📁 Highlight Project
 
-| Nama | Deskripsi | Tech |
+| Nama Proyek | Kategori | Deskripsi Singkat |
 |---|---|---|
-| [RyzuBot](https://github.com/Ryhandd/RyzuBot) | Bot WhatsApp serbaguna | JavaScript |
-| [RoomChat](https://github.com/Ryhandd/RoomChat) | Real-time chat berbasis WebSockets | JavaScript |
-| [SpaceDodge](https://github.com/Ryhandd/SpaceDodge) | Game arcade browser | JavaScript |
-| [Battery-Limiter](https://github.com/Ryhandd/Battery-Limiter) | Modul Smart Charge Limit | Shell |
-| [SensorKamera](https://github.com/Ryhandd/SensorKamera) | Deteksi sensor kamera | Python |
-| [RSniffer](https://github.com/Ryhandd/RSniffer) | Network tool — block, limit bandwidth, sniffing IP | Python |
+| **RyzuBot** | Automation | Bot WhatsApp multifungsi dengan performa tinggi. |
+| **RSniffer** | Networking | Network tool untuk monitoring dan pembatasan bandwidth. |
+| **Battery-Limiter** | System | Modul pengatur ambang batas pengisian daya Android. |
+| **RoomChat** | Web App | Ruang obrolan real-time berbasis room dan WebSockets. |
 
 ---
 
-## 📬 Kontak
+## 📬 Mari Terhubung
 
-[GitHub](https://github.com/Ryhandd) · [Instagram](https://www.instagram.com/rayhand_wumu) · [WhatsApp](https://wa.me/628971614687)
+Saya selalu terbuka untuk kolaborasi proyek atau sekadar diskusi teknis mengenai *web development*, *networking*, atau *Android system modding*.
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Ryhandd)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/rayhand_wumu)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=flat-square&logo=whatsapp&logoColor=white)](https://wa.me/628971614687)
+
+---
+<p align="center">Made with ☕ and Code by <b>Rayhand N. U. Wumu</b></p>
