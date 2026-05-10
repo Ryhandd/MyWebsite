@@ -8,486 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        :root {
-            --bg: #0e0f14;
-            --surface: #14151d;
-            --surface2: #1a1c28;
-            --accent: #7eb8d4;
-            --accent2: #a8d4ea;
-            --accent-glow: rgba(126,184,212,0.18);
-            --text: #eaedf5;
-            --text-dim: #7b8098;
-            --border: rgba(126,184,212,0.15);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
-
-        @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes wave { 0%,100% { height: 6px; } 50% { height: 22px; } }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 999;
-            opacity: 0.5;
-        }
-        
-        #portfolio {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 50px 20px 80px;
-            animation: fadeUp 0.6s ease forwards;
-        }
-
-        .bio-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        @media(max-width: 640px) {
-            .bio-section { grid-template-columns: 1fr; }
-        }
-
-        .bio-left {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .bio-avatar-wrap {
-            position: relative;
-            width: 90px; height: 90px;
-        }
-
-        .bio-avatar-wrap img {
-            width: 90px; height: 90px;
-            border-radius: 18px;
-            object-fit: cover;
-            border: 1px solid var(--border);
-        }
-
-        .online-dot {
-            position: absolute;
-            bottom: -3px; right: -3px;
-            width: 16px; height: 16px;
-            background: #4ade80;
-            border-radius: 50%;
-            border: 3px solid var(--surface);
-        }
-
-        .bio-name {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.9rem;
-            color: var(--text);
-            line-height: 1.1;
-        }
-
-        .bio-name span { color: var(--accent); }
-
-        .bio-desc {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .social-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text-dim);
-            font-size: 0.8rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-family: 'DM Mono', monospace;
-        }
-
-        .social-btn:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .skills-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            padding: 5px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            font-family: 'DM Mono', monospace;
-            background: var(--surface2);
-            transition: all 0.3s;
-        }
-
-        .skill-tag:hover { color: var(--accent); border-color: var(--accent); }
-
-        .player-wrap { align-self: start; }
-
-        .player-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 22px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .player-card::before {
-            content: '';
-            position: absolute;
-            top: -40px; right: -40px;
-            width: 150px; height: 150px;
-            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-            pointer-events: none;
-        }
-
-        .player-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .disc {
-            width: 58px; height: 58px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, #1a1c28, #2a3040, #1a1c28, #253040);
-            border: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            position: relative;
-        }
-
-        .disc.playing { animation: spin 4s linear infinite; }
-
-        .disc::after {
-            content: '';
-            width: 16px; height: 16px;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 2px solid var(--accent);
-            position: absolute;
-        }
-
-        .track-info { flex: 1; min-width: 0; }
-
-        .track-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 4px;
-        }
-
-        .track-artist {
-            font-size: 0.78rem;
-            color: var(--text-dim);
-            font-family: 'DM Mono', monospace;
-        }
-
-        .wave-bars {
-            display: flex;
-            align-items: center;
-            gap: 3px;
-            height: 28px;
-            margin-bottom: 16px;
-        }
-
-        .wave-bar {
-            flex: 1;
-            background: var(--accent);
-            border-radius: 3px;
-            height: 4px;
-            opacity: 0.4;
-        }
-
-        .wave-bar.active {
-            animation: wave 0.8s ease infinite;
-            opacity: 1;
-        }
-
-        .wave-bar:nth-child(2n) { animation-delay: 0.1s; }
-        .wave-bar:nth-child(3n) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(4n) { animation-delay: 0.15s; }
-        .wave-bar:nth-child(5n) { animation-delay: 0.05s; }
-
-        .progress-wrap { margin-bottom: 14px; }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: var(--surface2);
-            border-radius: 4px;
-            cursor: pointer;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent2));
-            border-radius: 4px;
-            width: 0%;
-            position: relative;
-            transition: width 0.1s linear;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            right: -5px; top: -4px;
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            background: var(--accent2);
-            box-shadow: 0 0 8px var(--accent-glow);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .progress-bar:hover .progress-fill::after { opacity: 1; }
-
-        .time-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            font-family: 'DM Mono', monospace;
-        }
-
-        .controls-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .ctrl-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            transition: all 0.2s;
-            padding: 6px;
-            border-radius: 8px;
-        }
-
-        .ctrl-btn:hover { color: var(--accent); }
-
-        .play-pause-btn {
-            width: 46px; height: 46px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: none;
-            cursor: pointer;
-            color: var(--bg);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(126,184,212,0.4);
-        }
-
-        .play-pause-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 24px rgba(126,184,212,0.55);
-        }
-
-        .bottom-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .vol-icon { color: var(--text-dim); font-size: 0.8rem; flex-shrink: 0; }
-
-        .vol-slider {
-            flex: 1;
-            -webkit-appearance: none;
-            appearance: none;
-            height: 4px;
-            background: var(--surface2);
-            border-radius: 4px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .vol-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 12px; height: 12px;
-            border-radius: 50%;
-            background: var(--accent);
-            cursor: pointer;
-        }
-
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 8px 16px;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--accent);
-            font-size: 0.78rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-family: 'DM Mono', monospace;
-            font-weight: 500;
-        }
-
-        .download-btn:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-
-        .section-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--text);
-            margin-bottom: 24px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 22px;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-glow) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.35s;
-            pointer-events: none;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-        }
-
-        .project-card:hover::before { opacity: 1; }
-
-        .card-icon { font-size: 1.4rem; margin-bottom: 2px; }
-        .card-title { font-weight: 600; font-size: 1rem; color: var(--text); }
-
-        .card-desc {
-            font-size: 0.83rem;
-            color: var(--text-dim);
-            line-height: 1.65;
-            flex: 1;
-        }
-
-        .card-footer {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-        }
-
-        .lang-tag {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            padding: 4px 10px;
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text-dim);
-        }
-
-        .open-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            padding: 4px 12px;
-            border-radius: 6px;
-            background: var(--accent);
-            color: var(--bg);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            position: relative;
-            z-index: 2;
-        }
-
-        .open-btn:hover { background: var(--accent2); transform: scale(1.04); }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div id="portfolio">
 
+    <!-- BIO SECTION -->
     <div class="bio-section">
         <div class="bio-left">
             <div class="bio-avatar-wrap">
@@ -578,11 +105,11 @@
         </div>
     </div>
 
+    <!-- PROJECTS SECTION -->
     <div class="section-label">portfolio</div>
     <div class="section-title">Projek Unggulan</div>
 
     <div class="project-grid">
-        
         <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
             <div class="card-icon">🤖</div>
             <div class="card-title">RyzuBot</div>
@@ -651,63 +178,93 @@
                 </span>
             </div>
         </a>
+    </div>
 
+    <!-- GALLERY SECTION -->
+    <div class="gallery-section">
+        <div class="section-label">creative</div>
+        <div class="section-title">Creative Side Quest</div>
+        <p class="gallery-intro">Eksplorasi visual di luar kode — gambar tangan dan digital art sebagai ruang ekspresi bebas.</p>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Placeholder cards — ganti src dengan path gambar asli Anda -->
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art1/600/500" alt="Artwork 1" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Sketch #01</div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-tall" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art2/500/700" alt="Artwork 2" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Digital Art #02</div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art3/600/480" alt="Artwork 3" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Lineart #03</div>
+                </div>
+            </div>
+            <div class="gallery-item gallery-wide" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art4/900/500" alt="Artwork 4" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Illustration #04</div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art5/580/520" alt="Artwork 5" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Character #05</div>
+                </div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="https://picsum.photos/seed/art6/560/500" alt="Artwork 6" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-overlay-icon"><i class="fa-solid fa-expand"></i></div>
+                    <div class="gallery-caption">Sketch #06</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #portfolio -->
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="lightbox-inner">
+        <img src="" alt="" id="lightboxImg">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
 </div>
 
-<script>
-    const audio = document.getElementById('audioPlayer');
-    const playIcon = document.getElementById('playIcon');
-    const disc = document.getElementById('disc');
-    const progressFill = document.getElementById('progressFill');
-    const currentTimeEl = document.getElementById('currentTime');
-    const durationEl = document.getElementById('duration');
-    const progressBar = document.getElementById('progressBar');
-    const waveBars = document.querySelectorAll('.wave-bar');
-    let isPlaying = false;
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <span class="footer-name">Rayhand <em>N. U. Wumu</em></span>
+            <span class="footer-copy">&copy; 2026 — All rights reserved.</span>
+        </div>
+        <div class="footer-socials">
+            <a href="https://github.com/Ryhandd" target="_blank" class="footer-social-btn" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/rayhand_wumu" target="_blank" class="footer-social-btn" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/628971614687" target="_blank" class="footer-social-btn" title="WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+</footer>
 
-    function formatTime(s) {
-        const m = Math.floor(s / 60);
-        const sec = Math.floor(s % 60);
-        return m + ':' + (sec < 10 ? '0' : '') + sec;
-    }
-
-    function togglePlay() {
-        if (isPlaying) { audio.pause(); } else { audio.play(); }
-    }
-
-    audio.addEventListener('play', () => {
-        isPlaying = true;
-        playIcon.className = 'fa-solid fa-pause';
-        disc.classList.add('playing');
-        waveBars.forEach(b => b.classList.add('active'));
-    });
-
-    audio.addEventListener('pause', () => {
-        isPlaying = false;
-        playIcon.className = 'fa-solid fa-play';
-        disc.classList.remove('playing');
-        waveBars.forEach(b => b.classList.remove('active'));
-    });
-
-    audio.addEventListener('timeupdate', () => {
-        if (!audio.duration) return;
-        progressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-        currentTimeEl.textContent = formatTime(audio.currentTime);
-    });
-
-    audio.addEventListener('loadedmetadata', () => {
-        durationEl.textContent = formatTime(audio.duration);
-    });
-
-    progressBar.addEventListener('click', (e) => {
-        const rect = progressBar.getBoundingClientRect();
-        audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-    });
-
-    function seekBackward() { audio.currentTime = Math.max(0, audio.currentTime - 10); }
-    function seekForward() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 10); }
-    function setVolume(v) { audio.volume = v; }
-</script>
+<script src="script.js"></script>
 </body>
 </html>
