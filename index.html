@@ -6,13 +6,63 @@
     <title>Rayhand</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+            margin-bottom: 32px;
+        }
+
+        .lang-btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            padding: 5px 13px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface2);
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 0.06em;
+        }
+
+        .lang-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: var(--bg);
+            border-color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* Japanese font override */
+        body.lang-ja .bio-desc,
+        body.lang-ja .card-desc,
+        body.lang-ja .gallery-intro,
+        body.lang-ja [data-i18n] {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.85;
+        }
+    </style>
 </head>
 <body>
 
 <div id="portfolio">
+
+    <!-- LANGUAGE SWITCHER -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('id')">ID</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ja')">JP</button>
+    </div>
 
     <!-- BIO SECTION -->
     <div class="bio-section">
@@ -23,7 +73,7 @@
             </div>
             <div>
                 <div class="bio-name">Rayhand <span>N.</span> U. <span>Wumu</span></div>
-                <div class="bio-desc">Pengembang perangkat lunak dengan fokus pada JavaScript dan Python, berorientasi pada pengembangan solusi otomatisasi, bot, dan sistem jaringan. Terbiasa membangun aplikasi efisien, termasuk layanan real-time dan tools untuk optimalisasi perangkat. Berfokus pada efisiensi, skalabilitas, serta solusi yang praktis dan berdampak.</div>
+                <div class="bio-desc" data-i18n="bio"></div>
             </div>
             <div class="social-row">
                 <a href="https://github.com/Ryhandd" target="_blank" class="social-btn">
@@ -80,13 +130,13 @@
                 </div>
 
                 <div class="controls-row">
-                    <button class="ctrl-btn" onclick="seekBackward()" title="Mundur 10s">
+                    <button class="ctrl-btn" onclick="seekBackward()">
                         <i class="fa-solid fa-rotate-left"></i>
                     </button>
                     <button class="play-pause-btn" onclick="togglePlay()">
                         <i class="fa-solid fa-play" id="playIcon"></i>
                     </button>
-                    <button class="ctrl-btn" onclick="seekForward()" title="Maju 10s">
+                    <button class="ctrl-btn" onclick="seekForward()">
                         <i class="fa-solid fa-rotate-right"></i>
                     </button>
                 </div>
@@ -95,7 +145,8 @@
                     <i class="fa-solid fa-volume-low vol-icon"></i>
                     <input type="range" class="vol-slider" min="0" max="1" step="0.02" value="1" oninput="setVolume(this.value)">
                     <a href="Summertime.mp3" download="Summertime.mp3" class="download-btn">
-                        <i class="fa-solid fa-download"></i> Download
+                        <i class="fa-solid fa-download"></i>
+                        <span data-i18n="download"></span>
                     </a>
                 </div>
             </div>
@@ -106,14 +157,15 @@
     </div>
 
     <!-- PROJECTS SECTION -->
-    <div class="section-label">portfolio</div>
-    <div class="section-title">Projek Unggulan</div>
+    <div class="section-label" data-i18n="label_portfolio"></div>
+    <div class="section-title" data-i18n="title_projects"></div>
 
     <div class="project-grid">
+
         <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
             <div class="card-icon">🤖</div>
             <div class="card-title">RyzuBot</div>
-            <div class="card-desc">Automasi bot WhatsApp serbaguna dengan performa tinggi dan fitur lengkap.</div>
+            <div class="card-desc" data-i18n="proj_ryzu"></div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
                 <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://wa.me/628998821419','_blank');})(event)">
@@ -125,7 +177,7 @@
         <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
             <div class="card-icon">💬</div>
             <div class="card-title">RoomChat</div>
-            <div class="card-desc">Website chatting real-time berbasis room menggunakan WebSockets.</div>
+            <div class="card-desc" data-i18n="proj_roomchat"></div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
                 <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('http://node2.lunes.host:3265/','_blank');})(event)">
@@ -137,28 +189,28 @@
         <a href="https://github.com/Ryhandd/Battery-Limiter" target="_blank" class="project-card">
             <div class="card-icon">⚡</div>
             <div class="card-title">Battery Limiter</div>
-            <div class="card-desc">Modul Magisk/KernelSU/KSUN ringan untuk membatasi persentase pengisian daya baterai secara otomatis.</div>
+            <div class="card-desc" data-i18n="proj_battery"></div>
             <div class="card-footer"><span class="lang-tag">Bash</span></div>
         </a>
 
         <a href="https://github.com/Ryhandd/RSniffer" target="_blank" class="project-card">
             <div class="card-icon">🔍</div>
             <div class="card-title">RSniffer</div>
-            <div class="card-desc">Network tool berbasis Linux untuk monitoring dan pembatasan bandwidth pada perangkat jaringan, dikembangkan sebagai modifikasi dari Evil Limiter oleh bitbrute.</div>
+            <div class="card-desc" data-i18n="proj_rsniffer"></div>
             <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
         <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
             <div class="card-icon">📷</div>
             <div class="card-title">SensorKamera</div>
-            <div class="card-desc">Implementasi deteksi sensor kamera menggunakan Python.</div>
+            <div class="card-desc" data-i18n="proj_sensor"></div>
             <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
         <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
             <div class="card-icon">🚀</div>
             <div class="card-title">SpaceDodge</div>
-            <div class="card-desc">Game arcade sederhana dengan kontrol yang adiktif.</div>
+            <div class="card-desc" data-i18n="proj_space"></div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
                 <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://space-dodge-theta.vercel.app/','_blank');})(event)">
@@ -170,7 +222,7 @@
         <a href="https://github.com/Ryhandd/Dam-Online" target="_blank" class="project-card">
             <div class="card-icon">♟</div>
             <div class="card-title">Dam-Online</div>
-            <div class="card-desc">Game Dam online berbasis web dengan sistem multiplayer real-time menggunakan Socket.io, dilengkapi fitur room, mode penonton.</div>
+            <div class="card-desc" data-i18n="proj_dam"></div>
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
                 <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('http://node22.lunes.host:3186/','_blank');})(event)">
@@ -178,16 +230,16 @@
                 </span>
             </div>
         </a>
+
     </div>
 
     <!-- GALLERY SECTION -->
     <div class="gallery-section">
-        <div class="section-label">creative</div>
+        <div class="section-label" data-i18n="label_creative"></div>
         <div class="section-title">Creative Side Quest</div>
-        <p class="gallery-intro">Eksplorasi visual di luar kode — gambar tangan dan digital art sebagai ruang ekspresi bebas.</p>
+        <p class="gallery-intro" data-i18n="gallery_intro"></p>
 
         <div class="gallery-grid" id="galleryGrid">
-            <!-- Placeholder cards — ganti src dengan path gambar asli Anda -->
             <div class="gallery-item" onclick="openLightbox(this)">
                 <img src="https://picsum.photos/seed/art1/600/500" alt="Artwork 1" loading="lazy">
                 <div class="gallery-overlay">
@@ -249,7 +301,7 @@
     <div class="footer-inner">
         <div class="footer-brand">
             <span class="footer-name">Rayhand <em>N. U. Wumu</em></span>
-            <span class="footer-copy">&copy; 2026 — All rights reserved.</span>
+            <span class="footer-copy">&copy; 2026 — <span data-i18n="footer_rights"></span></span>
         </div>
         <div class="footer-socials">
             <a href="https://github.com/Ryhandd" target="_blank" class="footer-social-btn" title="GitHub">
