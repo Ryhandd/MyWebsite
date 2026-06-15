@@ -22,18 +22,24 @@ Berbeda dengan kebanyakan portofolio modern yang menggunakan framework berat, we
 ### 🎵 Custom Music Player
 Pemutar musik interaktif yang terintegrasi langsung di homepage. Dilengkapi dengan:
 - Animasi piringan hitam (*disc*) yang responsif terhadap status lagu.
-- Waveform visualizer sederhana dan kontrol volume presisi.
+- Waveform visualizer sederhana, kontrol volume presisi, dan **tombol unduh musik (MP3)** secara lokal.
 
-### 📁 Proyek Unggulan
-Daftar proyek yang dikurasi secara dinamis, mencakup:
-- **Web Development:** Aplikasi real-time dengan WebSockets (RoomChat).
-- **Game Development:** Game pertarungan 2D dan game arcade berbasis Pygame & JavaScript (Fatal Syntax & SpaceDodge).
-- **Automation & Computer Vision:** Integrasi automasi bot WhatsApp dan deteksi sensor kamera berbasis Python & JavaScript (RyzuBot & SensorKamera).
+### 🌐 Multi-Language Support (i18n)
+Dukungan multibahasa secara dinamis tanpa perlu me-reload halaman:
+- Mendukung **Bahasa Indonesia (ID)**, **Inggris (EN)**, dan **Jepang (JP)**.
+- Mesin penerjemah ringan yang dikelola di sisi klien (*client-side*) menggunakan Vanilla JS.
 
-### 🎨 Creative Side Quest (New!)
-Bukan sekadar koding. Section ini menampilkan sisi kreatif saya melalui:
-- **Digital Art:** Eksplorasi desain dan ilustrasi digital.
-- **Analog Sketches:** Coretan tangan sebagai media brainstorming visual.
+### 📁 Proyek Unggulan & Aksi Instan
+Daftar proyek yang dikurasi secara dinamis dengan aksi interaktif langsung pada kartu proyek:
+- **Direct Download:** Unduh executable game **Fatal Syntax** langsung untuk dimainkan secara lokal.
+- **Direct Play:** Mainkan game arcade **SpaceDodge** langsung di browser.
+- **Direct Chat:** Hubungi dan uji coba automasi bot **RyzuBot** di WhatsApp secara instan.
+- **Open Live Demo:** Buka website chat real-time **RoomChat** berbasis WebSockets dalam satu klik.
+- Eksplorasi repositori proyek lainnya seperti deteksi berbasis **SensorKamera**.
+
+### 🎨 Creative Side Quest
+Eksplorasi visual interaktif menggunakan lightbox modal untuk menampilkan karya non-teknis:
+- **Digital Art & Analog Sketches:** Menampilkan coretan tangan dan ilustrasi kreatif sebagai ruang ekspresi bebas.
 
 ---
 
@@ -50,13 +56,13 @@ Bukan sekadar koding. Section ini menampilkan sisi kreatif saya melalui:
 
 ## 📁 Highlight Project
 
-| Nama Proyek | Kategori | Deskripsi Singkat |
-|---|---|---|
-| **Fatal Syntax** | Game Dev | Game tarung 2D bertema cyberpunk dengan Pygame. |
-| **RyzuBot** | Automation | Bot WhatsApp multifungsi dengan performa tinggi. |
-| **RoomChat** | Web App | Ruang obrolan real-time berbasis room dan WebSockets. |
-| **SensorKamera** | Computer Vision | Implementasi deteksi sensor kamera menggunakan Python. |
-| **SpaceDodge** | Game Dev | Game arcade sederhana dengan kontrol yang adiktif. |
+| Nama Proyek | Kategori | Deskripsi Singkat | Aksi / Interaksi |
+|---|---|---|---|
+| **Fatal Syntax** | Game Dev | Game tarung 2D bertema cyberpunk dengan Pygame. | **Direct Download** (ZIP via MediaFire) |
+| **RyzuBot** | Automation | Bot WhatsApp multifungsi dengan performa tinggi. | **Direct Chat** (Hubungkan ke WhatsApp) |
+| **RoomChat** | Web App | Ruang obrolan real-time berbasis room dan WebSockets. | **Live Demo** (Akses Website) |
+| **SensorKamera** | Computer Vision | Implementasi deteksi sensor kamera menggunakan Python. | Repositori GitHub |
+| **SpaceDodge** | Game Dev | Game arcade sederhana dengan kontrol yang adiktif. | **Direct Play** (Mainkan Langsung) |
 
 ---
 
