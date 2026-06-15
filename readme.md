@@ -26,9 +26,9 @@ Pemutar musik interaktif yang terintegrasi langsung di homepage. Dilengkapi deng
 
 ### 📁 Proyek Unggulan
 Daftar proyek yang dikurasi secara dinamis, mencakup:
-- **Web Development:** Aplikasi real-time dengan WebSockets.
-- **Networking & Security:** Tool sniffing, rate-limiting, dan ARP spoofing berbasis Python.
-- **Android Modding:** Script optimasi sistem (Magisk/KernelSU).
+- **Web Development:** Aplikasi real-time dengan WebSockets (RoomChat).
+- **Game Development:** Game pertarungan 2D dan game arcade berbasis Pygame & JavaScript (Fatal Syntax & SpaceDodge).
+- **Automation & Computer Vision:** Integrasi automasi bot WhatsApp dan deteksi sensor kamera berbasis Python & JavaScript (RyzuBot & SensorKamera).
 
 ### 🎨 Creative Side Quest (New!)
 Bukan sekadar koding. Section ini menampilkan sisi kreatif saya melalui:
@@ -52,16 +52,17 @@ Bukan sekadar koding. Section ini menampilkan sisi kreatif saya melalui:
 
 | Nama Proyek | Kategori | Deskripsi Singkat |
 |---|---|---|
+| **Fatal Syntax** | Game Dev | Game tarung 2D bertema cyberpunk dengan Pygame. |
 | **RyzuBot** | Automation | Bot WhatsApp multifungsi dengan performa tinggi. |
-| **RSniffer** | Networking | Network tool untuk monitoring dan pembatasan bandwidth. |
-| **Battery-Limiter** | System | Modul pengatur ambang batas pengisian daya Android. |
 | **RoomChat** | Web App | Ruang obrolan real-time berbasis room dan WebSockets. |
+| **SensorKamera** | Computer Vision | Implementasi deteksi sensor kamera menggunakan Python. |
+| **SpaceDodge** | Game Dev | Game arcade sederhana dengan kontrol yang adiktif. |
 
 ---
 
 ## 📬 Mari Terhubung
 
-Saya selalu terbuka untuk kolaborasi proyek atau sekadar diskusi teknis mengenai *web development*, *networking*, atau *Android system modding*.
+Saya selalu terbuka untuk kolaborasi proyek atau sekadar diskusi teknis mengenai *web development*, *game development*, atau *automation & computer vision*.
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Ryhandd)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/rayhand_wumu)

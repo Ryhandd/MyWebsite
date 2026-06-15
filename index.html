@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.8">
 </head>
 <body>
 
@@ -61,9 +61,10 @@
     <i class="fa-solid fa-chevron-up"></i>
 </button>
 
-<div id="portfolio" id="top">
+<div id="portfolio">
 
-    <div id="about" class="lang-switcher">
+    <div class="about-hero">
+        <div id="about" class="lang-switcher">
         <button class="lang-btn active" onclick="setLang('id')">ID</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
         <button class="lang-btn" onclick="setLang('ja')">JP</button>
@@ -75,7 +76,7 @@
                 <img src="https://files.catbox.moe/cz6tt0.jpg" alt="Rayhand">
                 <div class="online-dot"></div>
             </div>
-            <div>
+            <div class="bio-info">
                 <div class="bio-name">Rayhand <span>N.</span> U. <span>Wumu</span></div>
                 <div class="bio-desc" data-i18n="bio"></div>
             </div>
@@ -90,13 +91,31 @@
                     <i class="fa-brands fa-whatsapp"></i> WhatsApp
                 </a>
             </div>
-            <div class="skills-wrap">
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Bash</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">C/C++</span>
-                <span class="skill-tag">Java</span>
+            <div class="skills-section">
+                <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="skills_core">Core Technologies</div>
+                    <div class="skills-wrap">
+                        <span class="skill-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span class="skill-tag"><i class="fa-brands fa-python"></i> Python</span>
+                        <span class="skill-tag"><i class="fa-solid fa-code"></i> C/C++</span>
+                        <span class="skill-tag"><i class="fa-brands fa-java"></i> Java</span>
+                        <span class="skill-tag"><i class="fa-solid fa-terminal"></i> Bash</span>
+                        <span class="skill-tag"><i class="fa-solid fa-database"></i> MySQL</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="skills_gamedev">Game Development</div>
+                    <div class="skills-wrap">
+                        <span class="skill-tag"><i class="fa-solid fa-gamepad"></i> Pygame</span>
+                        <span class="skill-tag"><i class="fa-solid fa-cubes"></i> 2D Physics</span>
+                        <span class="skill-tag"><i class="fa-solid fa-brain"></i> Game AI</span>
+                        <span class="skill-tag"><i class="fa-solid fa-chess"></i> Mechanics Design</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-group-title" data-i18n="interests_label">Focus & Interests</div>
+                    <div class="interests-desc" data-i18n="interest_text"></div>
+                </div>
             </div>
         </div>
 
@@ -160,6 +179,8 @@
         </div>
     </div>
 
+    </div>
+
     <!-- PROJECTS SECTION -->
     <div id="projects"></div>
     <div class="section-label" data-i18n="label_portfolio"></div>
@@ -167,18 +188,20 @@
 
     <div class="project-grid">
 
-        <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
-            <div class="card-icon">🤖</div>
-            <div class="card-title">RyzuBot</div>
-            <div class="card-desc" data-i18n="proj_ryzu"></div>
+        <!-- Fatal Syntax -->
+        <a href="https://github.com/Ryhandd/FatalSyntax" target="_blank" class="project-card">
+            <div class="card-icon">🎮</div>
+            <div class="card-title">Fatal Syntax</div>
+            <div class="card-desc" data-i18n="proj_fatal_syntax"></div>
             <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://wa.me/628998821419','_blank');})(event)">
-                    <i class="fa-solid fa-paper-plane"></i> Chat
+                <span class="lang-tag">Python</span>
+                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://www.mediafire.com/file/5hvr8ie2z12mpnx/Fatal+Syntax.zip/file','_blank');})(event)">
+                    <i class="fa-solid fa-download"></i> Download
                 </span>
             </div>
         </a>
 
+        <!-- RoomChat -->
         <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
             <div class="card-icon">💬</div>
             <div class="card-title">RoomChat</div>
@@ -191,20 +214,20 @@
             </div>
         </a>
 
-        <a href="https://github.com/Ryhandd/Battery-Limiter" target="_blank" class="project-card">
-            <div class="card-icon">⚡</div>
-            <div class="card-title">Battery Limiter</div>
-            <div class="card-desc" data-i18n="proj_battery"></div>
-            <div class="card-footer"><span class="lang-tag">Bash</span></div>
+        <!-- RyzuBot -->
+        <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
+            <div class="card-icon">🤖</div>
+            <div class="card-title">RyzuBot</div>
+            <div class="card-desc" data-i18n="proj_ryzu"></div>
+            <div class="card-footer">
+                <span class="lang-tag">JavaScript</span>
+                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://wa.me/628998821419','_blank');})(event)">
+                    <i class="fa-solid fa-paper-plane"></i> Chat
+                </span>
+            </div>
         </a>
 
-        <a href="https://github.com/Ryhandd/RSniffer" target="_blank" class="project-card">
-            <div class="card-icon">🔍</div>
-            <div class="card-title">RSniffer</div>
-            <div class="card-desc" data-i18n="proj_rsniffer"></div>
-            <div class="card-footer"><span class="lang-tag">Python</span></div>
-        </a>
-
+        <!-- SensorKamera -->
         <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
             <div class="card-icon">📷</div>
             <div class="card-title">SensorKamera</div>
@@ -212,6 +235,7 @@
             <div class="card-footer"><span class="lang-tag">Python</span></div>
         </a>
 
+        <!-- SpaceDodge -->
         <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
             <div class="card-icon">🚀</div>
             <div class="card-title">SpaceDodge</div>
@@ -219,18 +243,6 @@
             <div class="card-footer">
                 <span class="lang-tag">JavaScript</span>
                 <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://space-dodge-theta.vercel.app/','_blank');})(event)">
-                    <i class="fa-solid fa-gamepad"></i> Play
-                </span>
-            </div>
-        </a>
-
-        <a href="https://github.com/Ryhandd/Dam-Online" target="_blank" class="project-card">
-            <div class="card-icon">♟</div>
-            <div class="card-title">Dam-Online</div>
-            <div class="card-desc" data-i18n="proj_dam"></div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('http://node22.lunes.host:3186/','_blank');})(event)">
                     <i class="fa-solid fa-gamepad"></i> Play
                 </span>
             </div>
