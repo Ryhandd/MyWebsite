@@ -31,7 +31,6 @@ Dukungan multibahasa secara dinamis tanpa perlu me-reload halaman:
 
 ### 📁 Proyek Unggulan & Aksi Instan
 Daftar proyek yang dikurasi secara dinamis dengan aksi interaktif langsung pada kartu proyek:
-- **Direct Download:** Unduh executable game **Fatal Syntax** langsung untuk dimainkan secara lokal.
 - **Direct Play:** Mainkan game arcade **SpaceDodge** langsung di browser.
 - **Direct Chat:** Hubungi dan uji coba automasi bot **RyzuBot** di WhatsApp secara instan.
 - **Open Live Demo:** Buka website chat real-time **RoomChat** berbasis WebSockets dalam satu klik.
@@ -58,7 +57,6 @@ Eksplorasi visual interaktif menggunakan lightbox modal untuk menampilkan karya 
 
 | Nama Proyek | Kategori | Deskripsi Singkat | Aksi / Interaksi |
 |---|---|---|---|
-| **Fatal Syntax** | Game Dev | Game tarung 2D bertema cyberpunk dengan Pygame. | **Direct Download** (ZIP via MediaFire) |
 | **RyzuBot** | Automation | Bot WhatsApp multifungsi dengan performa tinggi. | **Direct Chat** (Hubungkan ke WhatsApp) |
 | **RoomChat** | Web App | Ruang obrolan real-time berbasis room dan WebSockets. | **Live Demo** (Akses Website) |
 | **SensorKamera** | Computer Vision | Implementasi deteksi sensor kamera menggunakan Python. | Repositori GitHub |
