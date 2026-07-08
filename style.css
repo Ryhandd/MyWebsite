@@ -351,18 +351,14 @@ body::before {
    BIO SECTION
 =========================== */
 .about-hero {
-    min-height: calc(100vh - var(--navbar-h) - 15px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
     margin-bottom: 70px;
 }
 
 @media (max-width: 640px) {
     .about-hero {
-        min-height: auto;
-        margin-bottom: 50px;
+        margin-bottom: 70px;
     }
 }
 
