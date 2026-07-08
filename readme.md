@@ -66,7 +66,7 @@ Eksplorasi visual interaktif menggunakan lightbox modal untuk menampilkan karya 
 
 ## 📬 Mari Terhubung
 
-Saya selalu terbuka untuk kolaborasi proyek atau sekadar diskusi teknis mengenai *web development*, *game development*, atau *automation & computer vision*.
+Saya selalu terbuka untuk kolaborasi proyek atau sekadar diskusi teknis mengenai *web development* atau *automation & computer vision*.
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Ryhandd)
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/rayhand_wumu)

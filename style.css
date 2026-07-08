@@ -535,14 +535,6 @@ body::before {
     opacity: 1;
 }
 
-.interests-desc {
-    color: var(--text-dim);
-    font-size: 0.84rem;
-    line-height: 1.6;
-    font-family: 'Outfit', sans-serif;
-    border-left: 2px solid var(--border);
-    padding-left: 12px;
-}
 
 /* ===========================
    MUSIC PLAYER

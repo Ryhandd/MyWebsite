@@ -3,11 +3,8 @@
 =========================== */
 const translations = {
     id: {
-        bio: "Pengembang Perangkat Lunak & Game Developer yang berfokus pada pembuatan aplikasi web interaktif, sistem otomatisasi, serta pengalaman game 2D/3D. Menguasai arsitektur real-time dengan JavaScript/Node.js, automasi dengan Python, serta pemrograman game menggunakan Pygame dan C++. Berdedikasi untuk menciptakan kode bersih, efisien, dan berkinerja tinggi yang menggabungkan logika sistem yang rumit dengan interaksi pengguna yang dinamis.",
+        bio: "Pengembang Perangkat Lunak yang berfokus pada pembuatan aplikasi web interaktif serta sistem otomatisasi. Menguasai arsitektur real-time dengan JavaScript/Node.js dan automasi dengan Python. Berdedikasi untuk menciptakan kode bersih, efisien, dan berkinerja tinggi yang menggabungkan logika sistem yang rumit dengan interaksi pengguna yang dinamis.",
         skills_core:     "Teknologi Utama",
-        skills_gamedev:  "Pengembangan Game",
-        interests_label: "Fokus & Minat",
-        interest_text:   "Kecerdasan Buatan (AI) Game, Desain Mekanik Game, Arsitektur Jaringan Multiplayer, Optimalisasi Kinerja & Modifikasi Sistem.",
         download:        "Download",
         label_portfolio: "portfolio",
         title_projects:  "Projek Unggulan",
@@ -26,11 +23,8 @@ const translations = {
         nav_contact:     "Contact",
     },
     en: {
-        bio: "Software Engineer & Game Developer specializing in building interactive web applications, automation systems, and engaging 2D/3D gaming experiences. Experienced in real-time architecture using JavaScript/Node.js, automation scripting with Python, and game programming using Pygame and C++. Dedicated to writing clean, efficient, and high-performance code that merges complex system logic with dynamic user experiences.",
+        bio: "Software Engineer specializing in building interactive web applications and automation systems. Experienced in real-time architecture using JavaScript/Node.js and automation scripting with Python. Dedicated to writing clean, efficient, and high-performance code that merges complex system logic with dynamic user experiences.",
         skills_core:     "Core Technologies",
-        skills_gamedev:  "Game Development",
-        interests_label: "Focus & Interests",
-        interest_text:   "Game AI, Gameplay Mechanics, Multiplayer Networking, Performance Optimization, and System Modding.",
         download:        "Download",
         label_portfolio: "portfolio",
         title_projects:  "Featured Projects",
@@ -49,11 +43,8 @@ const translations = {
         nav_contact:     "Contact",
     },
     ja: {
-        bio: "インタラクティブなWebアプリケーション、自動化システム、および魅力的な2D/3Dゲーム開発に注力するソフトウェアエンジニア兼ゲームデベロッパー。JavaScript/Node.jsを用いたリアルタイム設計、Pythonによるスクリプト開発、PygameやC++でのゲームプログラミングを得意とする。複雑なシステムロジックと動的なユーザー体験を融合させた、クリーンで効率的かつ高性能なコードの作成に尽力している。",
+        bio: "インタラクティブなWebアプリケーションや自動化システムの開発に注力するソフトウェアエンジニア。JavaScript/Node.jsを用いたリアルタイム設計やPythonによるスクリプト開発を得意とする。複雑なシステムロジックと動的なユーザー体験を融合させた、クリーンで効率的かつ高性能なコードの作成に尽力している。",
         skills_core:     "主要技術",
-        skills_gamedev:  "ゲーム開発",
-        interests_label: "関心分野",
-        interest_text:   "ゲームAI、ゲームメカニクス設計、マルチプレイヤーネットワーク、パフォーマンス最適化、システム改造。",
         download:        "ダウンロード",
         label_portfolio: "ポートフォリオ",
         title_projects:  "主なプロジェクト",
