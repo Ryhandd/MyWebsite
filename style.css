@@ -1210,3 +1210,24 @@ body::before {
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(126,184,212,0.2);
 }
+/* ===========================
+   PROJECT CARDS v1.9 (ui-ux-pro-max pass)
+   Real buttons, SVG icons, 44px targets, visible focus
+=========================== */
+.project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.project-card{gap:12px;padding:24px;cursor:default;min-height:236px}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(126,184,212,.4);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 0 1px var(--accent-glow)}
+.project-card.is-new{border-color:rgba(126,184,212,.32);background:linear-gradient(160deg,rgba(126,184,212,.07),var(--surface) 55%)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;color:var(--accent);background:var(--accent-glow);border:1px solid var(--border)}
+.card-title{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;margin:0;display:flex;align-items:center;gap:8px}
+.card-desc{margin:0;line-height:1.65;color:var(--text-dim);font-size:.9rem;flex:1}
+.card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.card-footer{margin-top:4px;padding-top:14px;border-top:1px solid var(--border);gap:8px}
+.open-btn,.ghost-btn{min-height:40px;padding:0 16px;border-radius:10px;text-decoration:none;font-family:'DM Mono',monospace;font-size:.76rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer;transition:transform .2s,background .2s,border-color .2s,color .2s}
+.ghost-btn{color:var(--text);background:transparent;border:1px solid var(--border)}
+.ghost-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.status-badge.new{background:var(--accent-glow);color:var(--accent);border:1px solid var(--border);font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.open-btn:focus-visible,.ghost-btn:focus-visible,.nav-link:focus-visible,.social-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:480px){.project-grid{grid-template-columns:1fr}.card-footer .open-btn,.card-footer .ghost-btn{flex:1;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.project-card,.open-btn,.ghost-btn{transition:none}.project-card:hover{transform:none}}

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.8">
+    <link rel="stylesheet" href="style.css?v=1.9">
 </head>
 <body>
 
@@ -174,75 +174,55 @@
     <div class="section-title" data-i18n="title_projects"></div>
 
     <div class="project-grid">
-
-        <!-- SpaceDodge -->
-        <a href="https://github.com/Ryhandd/SpaceDodge" target="_blank" class="project-card">
-            <div class="card-icon">🚀</div>
-            <div class="card-title">SpaceDodge</div>
-            <div class="card-desc" data-i18n="proj_space"></div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://space-dodge-theta.vercel.app/','_blank');})(event)">
-                    <i class="fa-solid fa-gamepad"></i> Play
-                </span>
-            </div>
-        </a>
-
-        <!-- RyzuBotz -->
-        <a href="https://github.com/Ryhandd/RyzuBotz" target="_blank" class="project-card">
-            <div class="card-icon">🤖</div>
-            <div class="card-title">
-                RyzuBotz
-                <!-- <span class="status-badge online"><span class="status-dot"></span>Online</span> -->
-                <span class="status-badge offline"><span class="status-dot"></span>Offline</span>
-            </div>
-            <div class="card-desc" data-i18n="proj_ryzubotz"></div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://discord.com/oauth2/authorize?client_id=1516151726397325394&permissions=3229696&integration_type=0&scope=bot','_blank');})(event)">
-                    <i class="fa-brands fa-discord"></i> Invite
-                </span>
-            </div>
-        </a>
-
-        <!-- RyzuBot -->
-        <a href="https://github.com/Ryhandd/RyzuBot" target="_blank" class="project-card">
-            <div class="card-icon">🤖</div>
-            <div class="card-title">
-                RyzuBot
-                <span class="status-badge online"><span class="status-dot"></span>Online</span>
-                <!-- <span class="status-badge offline"><span class="status-dot"></span>Offline</span> -->
-            </div>
-            <div class="card-desc" data-i18n="proj_ryzu"></div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('https://wa.me/628998821419','_blank');})(event)">
-                    <i class="fa-solid fa-paper-plane"></i> Chat
-                </span>
-            </div>
-        </a>
-
-        <!-- RoomChat -->
-        <a href="https://github.com/Ryhandd/RoomChat" target="_blank" class="project-card">
-            <div class="card-icon">💬</div>
-            <div class="card-title">RoomChat</div>
-            <div class="card-desc" data-i18n="proj_roomchat"></div>
-            <div class="card-footer">
-                <span class="lang-tag">JavaScript</span>
-                <span class="open-btn" onclick="(function(e){e.preventDefault();e.stopPropagation();window.open('http://node65.lunes.host:3161/','_blank');})(event)">
-                    <i class="fa-solid fa-paper-plane"></i> Open
-                </span>
-            </div>
-        </a>
-
-        <!-- SensorKamera -->
-        <a href="https://github.com/Ryhandd/SensorKamera" target="_blank" class="project-card">
-            <div class="card-icon">📷</div>
-            <div class="card-title">SensorKamera</div>
-            <div class="card-desc" data-i18n="proj_sensor"></div>
-            <div class="card-footer"><span class="lang-tag">Python</span></div>
-        </a>
-
+        <article class="project-card">
+            <div class="card-top"><div class="card-icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div></div>
+            <h3 class="card-title">SpaceDodge</h3>
+            <p class="card-desc" data-i18n="proj_space"></p>
+            <div class="card-tags"><span class="lang-tag">JavaScript</span><span class="lang-tag">Game</span></div>
+            <div class="card-footer"><a class="open-btn" href="https://space-dodge-theta.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-gamepad"></i> Play</a><a class="ghost-btn" href="https://github.com/Ryhandd/SpaceDodge" target="_blank" rel="noopener noreferrer" aria-label="SpaceDodge on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card">
+            <div class="card-top"><div class="card-icon"><i class="fa-brands fa-discord" aria-hidden="true"></i></div><span class="status-badge offline"><span class="status-dot"></span>Offline</span></div>
+            <h3 class="card-title">RyzuBotz</h3>
+            <p class="card-desc" data-i18n="proj_ryzubotz"></p>
+            <div class="card-tags"><span class="lang-tag">JavaScript</span><span class="lang-tag">Discord</span></div>
+            <div class="card-footer"><a class="open-btn" href="https://discord.com/oauth2/authorize?client_id=1516151726397325394&permissions=3229696&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Invite</a><a class="ghost-btn" href="https://github.com/Ryhandd/RyzuBotz" target="_blank" rel="noopener noreferrer" aria-label="RyzuBotz on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card">
+            <div class="card-top"><div class="card-icon"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i></div><span class="status-badge online"><span class="status-dot"></span>Online</span></div>
+            <h3 class="card-title">RyzuBot</h3>
+            <p class="card-desc" data-i18n="proj_ryzu"></p>
+            <div class="card-tags"><span class="lang-tag">JavaScript</span><span class="lang-tag">WhatsApp</span></div>
+            <div class="card-footer"><a class="open-btn" href="https://wa.me/628998821419" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-paper-plane"></i> Chat</a><a class="ghost-btn" href="https://github.com/Ryhandd/RyzuBot" target="_blank" rel="noopener noreferrer" aria-label="RyzuBot on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card">
+            <div class="card-top"><div class="card-icon"><i class="fa-solid fa-comments" aria-hidden="true"></i></div></div>
+            <h3 class="card-title">RoomChat</h3>
+            <p class="card-desc" data-i18n="proj_roomchat"></p>
+            <div class="card-tags"><span class="lang-tag">JavaScript</span><span class="lang-tag">WebSockets</span></div>
+            <div class="card-footer"><a class="open-btn" href="http://node65.lunes.host:3161/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open</a><a class="ghost-btn" href="https://github.com/Ryhandd/RoomChat" target="_blank" rel="noopener noreferrer" aria-label="RoomChat on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card">
+            <div class="card-top"><div class="card-icon"><i class="fa-solid fa-camera" aria-hidden="true"></i></div></div>
+            <h3 class="card-title">SensorKamera</h3>
+            <p class="card-desc" data-i18n="proj_sensor"></p>
+            <div class="card-tags"><span class="lang-tag">Python</span><span class="lang-tag">Computer Vision</span></div>
+            <div class="card-footer"><a class="ghost-btn" href="https://github.com/Ryhandd/SensorKamera" target="_blank" rel="noopener noreferrer" aria-label="SensorKamera on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card is-new">
+            <div class="card-top"><div class="card-icon"><i class="fa-solid fa-layer-group" aria-hidden="true"></i></div><span class="status-badge new">New</span></div>
+            <h3 class="card-title">OmniWidget</h3>
+            <p class="card-desc" data-i18n="proj_omni"></p>
+            <div class="card-tags"><span class="lang-tag">Tauri</span><span class="lang-tag">Rust</span><span class="lang-tag">Preact</span><span class="lang-tag">Windows</span></div>
+            <div class="card-footer"><a class="open-btn" href="https://github.com/Ryhandd/OmniWidget/releases/latest" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-download"></i> Download</a><a class="ghost-btn" href="https://github.com/Ryhandd/OmniWidget" target="_blank" rel="noopener noreferrer" aria-label="OmniWidget on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
+        <article class="project-card is-new">
+            <div class="card-top"><div class="card-icon"><i class="fa-solid fa-flag" aria-hidden="true"></i></div><span class="status-badge new">New</span></div>
+            <h3 class="card-title">RyzuLab</h3>
+            <p class="card-desc" data-i18n="proj_lab"></p>
+            <div class="card-tags"><span class="lang-tag">React</span><span class="lang-tag">Supabase</span><span class="lang-tag">CTF</span></div>
+            <div class="card-footer"><a class="open-btn" href="https://RyzuLabs.vercel.app" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Website</a><a class="ghost-btn" href="https://github.com/Ryhandd/RyzuLab" target="_blank" rel="noopener noreferrer" aria-label="RyzuLab on GitHub"><i class="fa-brands fa-github"></i> GitHub</a></div>
+        </article>
     </div>
 
     <!-- GALLERY SECTION -->

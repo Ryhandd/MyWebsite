@@ -3,6 +3,8 @@
 =========================== */
 const translations = {
     id: {
+        proj_omni:       "Widget desktop modular gaya Dynamic Island untuk Windows: Pomodoro, to-do, clipboard, monitor sistem, pemutar musik, dan converter file dalam satu overlay ringan.",
+        proj_lab:        "Platform latihan Capture The Flag dengan tampilan terminal cyberpunk: 21 tantangan di 7 kategori, leaderboard global, dan sistem rank.",
         bio: "Pengembang Perangkat Lunak yang berfokus pada pembuatan aplikasi web interaktif serta sistem otomatisasi. Menguasai arsitektur real-time dengan JavaScript/Node.js dan automasi dengan Python. Berdedikasi untuk menciptakan kode bersih, efisien, dan berkinerja tinggi yang menggabungkan logika sistem yang rumit dengan interaksi pengguna yang dinamis.",
         skills_core:     "Teknologi Utama",
         download:        "Download",
@@ -23,6 +25,8 @@ const translations = {
         nav_contact:     "Contact",
     },
     en: {
+        proj_omni:       "A modular, Dynamic Island-style desktop widget for Windows: Pomodoro, to-do, clipboard, system monitor, music player, and a file converter in one lightweight overlay.",
+        proj_lab:        "A Capture The Flag training platform with a cyberpunk terminal look: 21 challenges across 7 categories, a global leaderboard, and a rank system.",
         bio: "Software Engineer specializing in building interactive web applications and automation systems. Experienced in real-time architecture using JavaScript/Node.js and automation scripting with Python. Dedicated to writing clean, efficient, and high-performance code that merges complex system logic with dynamic user experiences.",
         skills_core:     "Core Technologies",
         download:        "Download",
@@ -43,6 +47,8 @@ const translations = {
         nav_contact:     "Contact",
     },
     ja: {
+        proj_omni:       "Windows向けのDynamic Island風モジュール式デスクトップウィジェット。ポモドーロ、ToDo、クリップボード、システムモニター、音楽プレーヤー、ファイル変換を軽量オーバーレイにまとめています。",
+        proj_lab:        "サイバーパンク風ターミナルUIのCTF学習プラットフォーム。7カテゴリ21問の課題、グローバルランキング、ランクシステムを備えています。",
         bio: "インタラクティブなWebアプリケーションや自動化システムの開発に注力するソフトウェアエンジニア。JavaScript/Node.jsを用いたリアルタイム設計やPythonによるスクリプト開発を得意とする。複雑なシステムロジックと動的なユーザー体験を融合させた、クリーンで効率的かつ高性能なコードの作成に尽力している。",
         skills_core:     "主要技術",
         download:        "ダウンロード",
