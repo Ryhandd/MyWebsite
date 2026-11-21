@@ -1215,9 +1215,9 @@ body::before {
    Real buttons, SVG icons, 44px targets, visible focus
 =========================== */
 .project-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
-.project-card{gap:12px;padding:24px;cursor:default;min-height:236px}
-.project-card:hover{transform:translateY(-4px);border-color:rgba(126,184,212,.4);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 0 1px var(--accent-glow)}
-.project-card.is-new{border-color:rgba(126,184,212,.32);background:linear-gradient(160deg,rgba(126,184,212,.07),var(--surface) 55%)}
+.project-card{gap:12px;padding:24px;cursor:default;min-height:236px;border:1px solid rgba(126,184,212,.38)}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(126,184,212,.75);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 0 1px var(--accent-glow)}
+.project-card.is-new{border:1px solid rgba(126,184,212,.38);background:var(--surface)}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .card-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;color:var(--accent);background:var(--accent-glow);border:1px solid var(--border)}
 .card-title{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;margin:0;display:flex;align-items:center;gap:8px}
