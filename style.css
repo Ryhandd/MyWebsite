@@ -1218,6 +1218,12 @@ body::before {
 .project-card{gap:12px;padding:24px;cursor:default;min-height:236px;border:1px solid rgba(126,184,212,.38)}
 .project-card:hover{transform:translateY(-4px);border-color:rgba(126,184,212,.75);box-shadow:0 14px 40px rgba(0,0,0,.35),0 0 0 1px var(--accent-glow)}
 .project-card.is-new{border:1px solid rgba(126,184,212,.38);background:var(--surface)}
+.project-card.featured{border:1px solid rgba(126,184,212,.55);min-height:210px}
+.archive-section{margin-top:48px}
+.archive-header{margin-bottom:20px}
+.archive-title{font-family:'DM Serif Display',serif;font-size:1.35rem;font-weight:400;color:var(--text);margin:0 0 6px}
+.archive-intro{color:var(--text-dim);font-size:.86rem;line-height:1.6;margin:0}
+.archive-grid .project-card{border-color:var(--border);min-height:220px}
 .card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .card-icon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;color:var(--accent);background:var(--accent-glow);border:1px solid var(--border)}
 .card-title{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;margin:0;display:flex;align-items:center;gap:8px}
